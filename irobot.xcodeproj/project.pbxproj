@@ -1,0 +1,283 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5A31C235146860C3001E0B9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A31C234146860C3001E0B9F /* UIKit.framework */; };
+		5A31C237146860C3001E0B9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A31C236146860C3001E0B9F /* Foundation.framework */; };
+		5A31C239146860C3001E0B9F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A31C238146860C3001E0B9F /* CoreGraphics.framework */; };
+		5A31C23F146860C3001E0B9F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5A31C23D146860C3001E0B9F /* InfoPlist.strings */; };
+		5A31C242146860C3001E0B9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A31C241146860C3001E0B9F /* main.m */; };
+		5A31C245146860C3001E0B9F /* irobotAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A31C244146860C3001E0B9F /* irobotAppDelegate.m */; };
+		5A31C248146860C3001E0B9F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A31C246146860C3001E0B9F /* MainWindow.xib */; };
+		5A31C24B146860C3001E0B9F /* irobotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A31C24A146860C3001E0B9F /* irobotViewController.m */; };
+		5A31C24E146860C3001E0B9F /* irobotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A31C24C146860C3001E0B9F /* irobotViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5A31C230146860C3001E0B9F /* irobot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = irobot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A31C234146860C3001E0B9F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5A31C236146860C3001E0B9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5A31C238146860C3001E0B9F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5A31C23C146860C3001E0B9F /* irobot-Info.plist */ = {isa = PBXFileReference; path = "irobot-Info.plist"; sourceTree = "<group>"; };
+		5A31C23E146860C3001E0B9F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5A31C240146860C3001E0B9F /* irobot-Prefix.pch */ = {isa = PBXFileReference; path = "irobot-Prefix.pch"; sourceTree = "<group>"; };
+		5A31C241146860C3001E0B9F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5A31C243146860C3001E0B9F /* irobotAppDelegate.h */ = {isa = PBXFileReference; path = irobotAppDelegate.h; sourceTree = "<group>"; };
+		5A31C244146860C3001E0B9F /* irobotAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = irobotAppDelegate.m; sourceTree = "<group>"; };
+		5A31C247146860C3001E0B9F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		5A31C249146860C3001E0B9F /* irobotViewController.h */ = {isa = PBXFileReference; path = irobotViewController.h; sourceTree = "<group>"; };
+		5A31C24A146860C3001E0B9F /* irobotViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = irobotViewController.m; sourceTree = "<group>"; };
+		5A31C24D146860C3001E0B9F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/irobotViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5A31C22D146860C3001E0B9F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A31C235146860C3001E0B9F /* UIKit.framework in Frameworks */,
+				5A31C237146860C3001E0B9F /* Foundation.framework in Frameworks */,
+				5A31C239146860C3001E0B9F /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5A31C225146860C3001E0B9F = {
+			isa = PBXGroup;
+			children = (
+				5A31C23A146860C3001E0B9F /* irobot */,
+				5A31C233146860C3001E0B9F /* Frameworks */,
+				5A31C231146860C3001E0B9F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5A31C231146860C3001E0B9F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5A31C230146860C3001E0B9F /* irobot.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5A31C233146860C3001E0B9F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5A31C234146860C3001E0B9F /* UIKit.framework */,
+				5A31C236146860C3001E0B9F /* Foundation.framework */,
+				5A31C238146860C3001E0B9F /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5A31C23A146860C3001E0B9F /* irobot */ = {
+			isa = PBXGroup;
+			children = (
+				5A31C243146860C3001E0B9F /* irobotAppDelegate.h */,
+				5A31C244146860C3001E0B9F /* irobotAppDelegate.m */,
+				5A31C246146860C3001E0B9F /* MainWindow.xib */,
+				5A31C249146860C3001E0B9F /* irobotViewController.h */,
+				5A31C24A146860C3001E0B9F /* irobotViewController.m */,
+				5A31C24C146860C3001E0B9F /* irobotViewController.xib */,
+				5A31C23B146860C3001E0B9F /* Supporting Files */,
+			);
+			path = irobot;
+			sourceTree = "<group>";
+		};
+		5A31C23B146860C3001E0B9F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5A31C23C146860C3001E0B9F /* irobot-Info.plist */,
+				5A31C23D146860C3001E0B9F /* InfoPlist.strings */,
+				5A31C240146860C3001E0B9F /* irobot-Prefix.pch */,
+				5A31C241146860C3001E0B9F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5A31C22F146860C3001E0B9F /* irobot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A31C251146860C3001E0B9F /* Build configuration list for PBXNativeTarget "irobot" */;
+			buildPhases = (
+				5A31C22C146860C3001E0B9F /* Sources */,
+				5A31C22D146860C3001E0B9F /* Frameworks */,
+				5A31C22E146860C3001E0B9F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = irobot;
+			productName = irobot;
+			productReference = 5A31C230146860C3001E0B9F /* irobot.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5A31C227146860C3001E0B9F /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 5A31C22A146860C3001E0B9F /* Build configuration list for PBXProject "irobot" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5A31C225146860C3001E0B9F;
+			productRefGroup = 5A31C231146860C3001E0B9F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5A31C22F146860C3001E0B9F /* irobot */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5A31C22E146860C3001E0B9F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A31C23F146860C3001E0B9F /* InfoPlist.strings in Resources */,
+				5A31C248146860C3001E0B9F /* MainWindow.xib in Resources */,
+				5A31C24E146860C3001E0B9F /* irobotViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5A31C22C146860C3001E0B9F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A31C242146860C3001E0B9F /* main.m in Sources */,
+				5A31C245146860C3001E0B9F /* irobotAppDelegate.m in Sources */,
+				5A31C24B146860C3001E0B9F /* irobotViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5A31C23D146860C3001E0B9F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5A31C23E146860C3001E0B9F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		5A31C246146860C3001E0B9F /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5A31C247146860C3001E0B9F /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		5A31C24C146860C3001E0B9F /* irobotViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5A31C24D146860C3001E0B9F /* en */,
+			);
+			name = irobotViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5A31C24F146860C3001E0B9F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		5A31C250146860C3001E0B9F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		5A31C252146860C3001E0B9F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "irobot/irobot-Prefix.pch";
+				INFOPLIST_FILE = "irobot/irobot-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		5A31C253146860C3001E0B9F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "irobot/irobot-Prefix.pch";
+				INFOPLIST_FILE = "irobot/irobot-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5A31C22A146860C3001E0B9F /* Build configuration list for PBXProject "irobot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A31C24F146860C3001E0B9F /* Debug */,
+				5A31C250146860C3001E0B9F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5A31C251146860C3001E0B9F /* Build configuration list for PBXNativeTarget "irobot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A31C252146860C3001E0B9F /* Debug */,
+				5A31C253146860C3001E0B9F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5A31C227146860C3001E0B9F /* Project object */;
+}

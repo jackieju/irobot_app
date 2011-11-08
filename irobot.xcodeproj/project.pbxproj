@@ -16,6 +16,11 @@
 		5A31C248146860C3001E0B9F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A31C246146860C3001E0B9F /* MainWindow.xib */; };
 		5A31C24B146860C3001E0B9F /* irobotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A31C24A146860C3001E0B9F /* irobotViewController.m */; };
 		5A31C24E146860C3001E0B9F /* irobotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A31C24C146860C3001E0B9F /* irobotViewController.xib */; };
+		5A31C25E14687E8E001E0B9F /* irobot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5A31C25D14687E8E001E0B9F /* irobot.jpg */; };
+		5A31C26E14688B3B001E0B9F /* irobot2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5A31C26D14688B3B001E0B9F /* irobot2.jpg */; };
+		5A31C27E1468A668001E0B9F /* eye_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A31C27B1468A668001E0B9F /* eye_0.png */; };
+		5A31C27F1468A668001E0B9F /* eye_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A31C27C1468A668001E0B9F /* eye_1.png */; };
+		5A31C2801468A668001E0B9F /* eye_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A31C27D1468A668001E0B9F /* eye_2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,16 +28,21 @@
 		5A31C234146860C3001E0B9F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5A31C236146860C3001E0B9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5A31C238146860C3001E0B9F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		5A31C23C146860C3001E0B9F /* irobot-Info.plist */ = {isa = PBXFileReference; path = "irobot-Info.plist"; sourceTree = "<group>"; };
+		5A31C23C146860C3001E0B9F /* irobot-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "irobot-Info.plist"; sourceTree = "<group>"; };
 		5A31C23E146860C3001E0B9F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5A31C240146860C3001E0B9F /* irobot-Prefix.pch */ = {isa = PBXFileReference; path = "irobot-Prefix.pch"; sourceTree = "<group>"; };
+		5A31C240146860C3001E0B9F /* irobot-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "irobot-Prefix.pch"; sourceTree = "<group>"; };
 		5A31C241146860C3001E0B9F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		5A31C243146860C3001E0B9F /* irobotAppDelegate.h */ = {isa = PBXFileReference; path = irobotAppDelegate.h; sourceTree = "<group>"; };
+		5A31C243146860C3001E0B9F /* irobotAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = irobotAppDelegate.h; sourceTree = "<group>"; };
 		5A31C244146860C3001E0B9F /* irobotAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = irobotAppDelegate.m; sourceTree = "<group>"; };
 		5A31C247146860C3001E0B9F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		5A31C249146860C3001E0B9F /* irobotViewController.h */ = {isa = PBXFileReference; path = irobotViewController.h; sourceTree = "<group>"; };
+		5A31C249146860C3001E0B9F /* irobotViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = irobotViewController.h; sourceTree = "<group>"; };
 		5A31C24A146860C3001E0B9F /* irobotViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = irobotViewController.m; sourceTree = "<group>"; };
 		5A31C24D146860C3001E0B9F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/irobotViewController.xib; sourceTree = "<group>"; };
+		5A31C25D14687E8E001E0B9F /* irobot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = irobot.jpg; sourceTree = "<group>"; };
+		5A31C26D14688B3B001E0B9F /* irobot2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = irobot2.jpg; sourceTree = "<group>"; };
+		5A31C27B1468A668001E0B9F /* eye_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye_0.png; sourceTree = "<group>"; };
+		5A31C27C1468A668001E0B9F /* eye_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye_1.png; sourceTree = "<group>"; };
+		5A31C27D1468A668001E0B9F /* eye_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye_2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +89,7 @@
 		5A31C23A146860C3001E0B9F /* irobot */ = {
 			isa = PBXGroup;
 			children = (
+				5A31C25C14687E11001E0B9F /* resources */,
 				5A31C243146860C3001E0B9F /* irobotAppDelegate.h */,
 				5A31C244146860C3001E0B9F /* irobotAppDelegate.m */,
 				5A31C246146860C3001E0B9F /* MainWindow.xib */,
@@ -99,6 +110,18 @@
 				5A31C241146860C3001E0B9F /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5A31C25C14687E11001E0B9F /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				5A31C25D14687E8E001E0B9F /* irobot.jpg */,
+				5A31C27B1468A668001E0B9F /* eye_0.png */,
+				5A31C27C1468A668001E0B9F /* eye_1.png */,
+				5A31C27D1468A668001E0B9F /* eye_2.png */,
+				5A31C26D14688B3B001E0B9F /* irobot2.jpg */,
+			);
+			name = resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +174,11 @@
 				5A31C23F146860C3001E0B9F /* InfoPlist.strings in Resources */,
 				5A31C248146860C3001E0B9F /* MainWindow.xib in Resources */,
 				5A31C24E146860C3001E0B9F /* irobotViewController.xib in Resources */,
+				5A31C25E14687E8E001E0B9F /* irobot.jpg in Resources */,
+				5A31C26E14688B3B001E0B9F /* irobot2.jpg in Resources */,
+				5A31C27E1468A668001E0B9F /* eye_0.png in Resources */,
+				5A31C27F1468A668001E0B9F /* eye_1.png in Resources */,
+				5A31C2801468A668001E0B9F /* eye_2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

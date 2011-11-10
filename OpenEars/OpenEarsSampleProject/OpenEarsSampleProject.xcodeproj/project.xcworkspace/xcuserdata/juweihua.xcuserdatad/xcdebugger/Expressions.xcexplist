@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesStackState
+   version = "1.0">
+   <StackStates>
+      <StackState
+         stackFrameDescription = "-[PocketsphinxController startVoiceRecognitionThreadAutoreleasePoolWithArray:]:PocketsphinxController.mm">
+         <expressions>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[ContinuousModel listeningLoopWithLanguageModelAtPath:dictionaryAtPath:languageModelIsJSGF:]:ContinuousModel.mm">
+         <expressions>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "cmd_ln_parse_r:cmd_ln.c">
+         <expressions>
+            <expression
+               value = "argv[j]">
+            </expression>
+         </expressions>
+      </StackState>
+   </StackStates>
+</VariablesStackState>

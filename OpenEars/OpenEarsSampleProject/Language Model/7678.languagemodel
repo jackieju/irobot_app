@@ -1,0 +1,115 @@
+Language model created by QuickLM on Fri Nov  4 15:58:43 EDT 2011
+Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
+
+The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
+
+The code that was used to produce this language model is available in Open Source.
+Please visit http://www.speech.cs.cmu.edu/tools/ for more information
+
+The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
+This model based on a corpus of 15 sentences and 26 words
+
+\data\
+ngram 1=26
+ngram 2=40
+ngram 3=26
+
+\1-grams:
+-0.8731 </s> -0.3010
+-0.8731 <s> -0.2386
+-2.0492 AROUND -0.2386
+-2.0492 AT -0.2971
+-2.0492 BACKWARD -0.2386
+-2.0492 BOLL -0.2386
+-2.0492 CHASING -0.2971
+-2.0492 CLEAN -0.2932
+-2.0492 DANCE -0.2386
+-2.0492 DESK -0.2386
+-2.0492 FACE -0.2386
+-2.0492 FORWARD -0.2386
+-2.0492 GO -0.2386
+-2.0492 LEFT -0.2386
+-2.0492 LOOK -0.2971
+-2.0492 ME -0.2386
+-1.7482 MY -0.2932
+-2.0492 PLAY -0.2971
+-2.0492 RIGHT -0.2386
+-2.0492 SAY -0.2971
+-2.0492 SOMETHING -0.2386
+-2.0492 STOP -0.2386
+-2.0492 TRACK -0.2932
+-1.7482 TURN -0.2341
+-2.0492 WITH -0.2971
+-2.0492 YOURSELF -0.2386
+
+\2-grams:
+-1.4771 <s> BACKWARD 0.0000
+-1.4771 <s> CHASING 0.0000
+-1.4771 <s> CLEAN 0.0000
+-1.4771 <s> DANCE 0.0000
+-1.4771 <s> FORWARD 0.0000
+-1.4771 <s> GO 0.0000
+-1.4771 <s> LEFT 0.0000
+-1.4771 <s> LOOK 0.0000
+-1.4771 <s> PLAY 0.0000
+-1.4771 <s> RIGHT 0.0000
+-1.4771 <s> SAY 0.0000
+-1.4771 <s> STOP 0.0000
+-1.4771 <s> TRACK 0.0000
+-1.1761 <s> TURN 0.0000
+-0.3010 AROUND </s> -0.3010
+-0.3010 AT ME 0.0000
+-0.3010 BACKWARD </s> -0.3010
+-0.3010 BOLL </s> -0.3010
+-0.3010 CHASING BOLL 0.0000
+-0.3010 CLEAN MY -0.1761
+-0.3010 DANCE </s> -0.3010
+-0.3010 DESK </s> -0.3010
+-0.3010 FACE </s> -0.3010
+-0.3010 FORWARD </s> -0.3010
+-0.3010 GO </s> -0.3010
+-0.3010 LEFT </s> -0.3010
+-0.3010 LOOK AT 0.0000
+-0.3010 ME </s> -0.3010
+-0.6021 MY DESK 0.0000
+-0.6021 MY FACE 0.0000
+-0.3010 PLAY WITH 0.0000
+-0.3010 RIGHT </s> -0.3010
+-0.3010 SAY SOMETHING 0.0000
+-0.3010 SOMETHING </s> -0.3010
+-0.3010 STOP </s> -0.3010
+-0.3010 TRACK MY -0.1761
+-0.6021 TURN </s> -0.3010
+-0.6021 TURN AROUND 0.0000
+-0.3010 WITH YOURSELF 0.0000
+-0.3010 YOURSELF </s> -0.3010
+
+\3-grams:
+-0.3010 <s> BACKWARD </s>
+-0.3010 <s> CHASING BOLL
+-0.3010 <s> CLEAN MY
+-0.3010 <s> DANCE </s>
+-0.3010 <s> FORWARD </s>
+-0.3010 <s> GO </s>
+-0.3010 <s> LEFT </s>
+-0.3010 <s> LOOK AT
+-0.3010 <s> PLAY WITH
+-0.3010 <s> RIGHT </s>
+-0.3010 <s> SAY SOMETHING
+-0.3010 <s> STOP </s>
+-0.3010 <s> TRACK MY
+-0.6021 <s> TURN </s>
+-0.6021 <s> TURN AROUND
+-0.3010 AT ME </s>
+-0.3010 CHASING BOLL </s>
+-0.3010 CLEAN MY DESK
+-0.3010 LOOK AT ME
+-0.3010 MY DESK </s>
+-0.3010 MY FACE </s>
+-0.3010 PLAY WITH YOURSELF
+-0.3010 SAY SOMETHING </s>
+-0.3010 TRACK MY FACE
+-0.3010 TURN AROUND </s>
+-0.3010 WITH YOURSELF </s>
+
+\end\

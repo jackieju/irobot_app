@@ -14,11 +14,21 @@
 
 
 @synthesize window=_window;
-
+@synthesize audioSessionManager;
 @synthesize viewController=_viewController;
+
+// Lazily instantiated AudioSessionManager object. This class can definitely only be instantiated as an object once in the app, so this is a pretty safe way to allocate it.
+- (AudioSessionManager *)audioSessionManager {
+	if (audioSessionManager == nil) {
+		audioSessionManager = [[AudioSessionManager alloc] init];
+	}
+	return audioSessionManager;
+}
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self.audioSessionManager startAudioSession];
     // Override point for customization after application launch.
 self.window.windowLevel = UIWindowLevelStatusBar + 1.0f; 
     self.window.rootViewController = self.viewController;
@@ -69,6 +79,7 @@ self.window.windowLevel = UIWindowLevelStatusBar + 1.0f;
 {
     [_window release];
     [_viewController release];
+    [audioSessionManager release];
     [super dealloc];
 }
 

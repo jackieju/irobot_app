@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIImageOpenCV.h"
+
 @class PocketsphinxController;
 @class FliteController;
 #import "OpenEarsEventsObserver.h" // We need to import this here in order to use the delegate.
 
-@interface irobotViewController : UIViewController <OpenEarsEventsObserverDelegate>{
+@interface irobotViewController : UIViewController <OpenEarsEventsObserverDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
     time_t t_start;
     UIImageView *background;
 
@@ -25,6 +27,13 @@
     
     NSString *pathToGrammarToStartAppWith;
 	NSString *pathToDictionaryToStartAppWith;
+    
+    // face detection
+    UIImagePickerController *camera;
+    CvHaarClassifierCascade *model;
+    BOOL detecting;
+       UIDeviceOrientation orientation;
+     CGRect face;
 }
 @property (nonatomic, retain) IBOutlet UITextView *textView;
 
@@ -34,10 +43,15 @@
 
 @property (nonatomic, retain) OpenEarsEventsObserver *openEarsEventsObserver;
 @property (nonatomic, retain) PocketsphinxController *pocketsphinxController;
-
+@property (nonatomic, retain) UIImagePickerController *camera;
 
 @property (nonatomic, copy) NSString *pathToGrammarToStartAppWith;
 @property (nonatomic, copy) NSString *pathToDictionaryToStartAppWith;
 - (void) onTimer;
     
+@property (nonatomic, assign) CvHaarClassifierCascade *model;
+@property (assign) BOOL detecting;
+- (void)startDetection;
+
+- (void)stopDetection;
 @end

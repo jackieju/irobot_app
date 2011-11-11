@@ -6,7 +6,9 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+
 #import "irobotViewController.h"
+#import <AVFoundation/AVFoundation.h>
 
 // import for OpenEars 
 #import "AudioSessionManager.h"
@@ -27,6 +29,13 @@
 @synthesize pathToGrammarToStartAppWith;
 @synthesize pathToDictionaryToStartAppWith;
 
+@synthesize camera;
+@synthesize model;
+
+
+
+static CvMemStorage *storage = 0;
+
 - (void)dealloc
 {
     [background release];
@@ -38,6 +47,8 @@
     [pocketsphinxController release];
     [status_view release];
     [textView release];
+    
+    self.camera = nil;
     [super dealloc];
 }
 
@@ -104,6 +115,20 @@
 
 
     [self.pocketsphinxController startListeningWithLanguageModelAtPath:pathToGrammarToStartAppWith dictionaryAtPath:pathToDictionaryToStartAppWith languageModelIsJSGF:FALSE];
+    
+    // hide text view
+    textView.hidden = TRUE;
+    left_eye.hidden = TRUE;
+    right_eye.hidden = TRUE;
+    
+    // show camera
+ 
+    self.camera = [[UIImagePickerController alloc] init];
+    camera.sourceType =UIImagePickerControllerSourceTypeCamera;
+    camera.delegate = self;
+    camera.showsCameraControls = NO;
+    camera.cameraOverlayView = self.view;
+    [self presentModalViewController:camera animated:YES];
 
 }
 
@@ -451,4 +476,132 @@
 	NSLog(@"Setting up the continuous recognition loop has failed for some reason, please turn on OPENEARSLOGGING in OpenEarsConfig.h to learn more."); // Log it.
 	self.textView.text = @"Status: Not possible to start recognition loop."; // Show it in the status box.	
 }
+
+
+// for face dectection
+/*
+- (void)viewDidAppear:(BOOL)animated {
+    [self presentModalViewController:camera animated:NO]; 
+  //  [self startDetection];
+}
+*/
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    
+}
+
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    
+}
+- (void)detectFaceThread {
+    
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    [self retain];
+    
+    self.detecting = YES;
+    
+    if(self.model == nil) {
+        NSString *file = [[NSBundle mainBundle] pathForResource:@"haarcascade_frontalface_alt2.xml" ofType:@"gz"];
+        self.model = (CvHaarClassifierCascade *) cvLoad([file cStringUsingEncoding:NSASCIIStringEncoding], 0, 0, 0);
+    }
+    
+    UIDevice *device = [UIDevice currentDevice];
+    
+   // CGImageRef screen = [UIImage UIGetScreenImage];
+   // UIImage *viewImage = [UIImage imageWithCGImage:screen];
+    UIImage *viewImage = [UIImage UIGetScreenImage];
+   // CGImageRelease(screen);
+    CGRect scaled;
+    scaled.size = viewImage.size;
+    
+//    if([device platformType] != UIDevice3GSiPhone) {
+//        scaled.size.width *= .5;
+//        scaled.size.height *= .5;
+//    } else {
+        scaled.size.width *= .75;
+        scaled.size.height *= .75;
+//    }
+    
+    //self.preview = viewImage;
+    viewImage = [viewImage scaleImage:scaled];
+    
+    // Convert to grayscale and equalize.  Helps face detection.
+    IplImage *snapshot = [viewImage cvGrayscaleImage];
+    IplImage *snapshotRotated = cvCloneImage(snapshot);
+    cvEqualizeHist(snapshot, snapshot);
+    
+    // Rotate image if necessary.  In case phone is being held in 
+    // landscape orientation.
+    float angle = 0;
+    if(orientation == UIDeviceOrientationLandscapeLeft) {
+        angle = 90;
+    } else if(orientation == UIDeviceOrientationLandscapeRight) {
+        angle = -90;
+    } 
+    
+    if(angle != 0) {
+        CvPoint2D32f center;
+        CvMat *translate = cvCreateMat(2, 3, CV_32FC1);
+        cvSetZero(translate);
+        center.x = viewImage.size.width / 2;
+        center.y = viewImage.size.height / 2;
+        cv2DRotationMatrix(center, angle, 1.0, translate);
+        cvWarpAffine(snapshot, snapshotRotated, translate, CV_INTER_LINEAR + CV_WARP_FILL_OUTLIERS, cvScalarAll(0));
+        cvReleaseMat(&translate);   
+    }
+    
+    storage = cvCreateMemStorage(0);
+    
+    double t = (double)cvGetTickCount();
+    CvSeq* faces = cvHaarDetectObjects(snapshotRotated, self.model, storage,
+                                       1.1, 2, CV_HAAR_DO_CANNY_PRUNING,
+                                       cvSize(30, 30));
+    t = (double)cvGetTickCount() - t;
+    
+    NSLog(@"Face detection time %gms FOUND(%d)", t/((double)cvGetTickFrequency()*1000), faces->total);
+    
+    // If a face is found trigger the shutter otherwise perform
+    // face detection again.
+    if(faces->total > 0) {
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+        [NSThread sleepForTimeInterval:1];
+        [camera takePicture];
+        
+        CvRect *r = (CvRect *) cvGetSeqElem(faces, 0);
+        
+        face.origin.x = (float) r->x;
+        face.origin.y = (float) r->y;
+        face.size.width = (float) r->width;
+        face.size.height = (float) r->height;
+        
+//        if([device platformType] != UIDevice3GSiPhone) {
+            face.size.width /= .5;
+            face.size.height /= .5;
+            face.origin.x /= .5;
+            face.origin.y /= .5;
+//        } else {
+//            face.size.width /= .75; face.size.width += 55 * .75;
+//            face.size.height /= .75; face.size.height += 55 * .75;
+//            face.origin.x /= .75; face.origin.x += 55 * .75;
+//            face.origin.y /= .75; face.origin.y += 55 * .75;
+//        }
+        
+    } else {
+        if(self.detecting) {
+            [self performSelectorInBackground:@selector(detectFaceThread) withObject:nil];
+        }
+    }
+    
+    cvReleaseImage(&snapshot);
+    cvReleaseImage(&snapshotRotated);
+    cvReleaseMemStorage(&storage);
+    
+    [pool release];
+    [self release];
+}
+
+- (void)startDetection {
+    [self performSelectorInBackground:@selector(detectFaceThread) withObject:nil];
+}
+
 @end

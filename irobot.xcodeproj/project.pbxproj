@@ -33,9 +33,17 @@
 		5A31C2A61468AEDA001E0B9F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A31C2A31468AEDA001E0B9F /* AudioToolbox.framework */; };
 		5A31C2A71468AEDA001E0B9F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A31C2A41468AEDA001E0B9F /* AVFoundation.framework */; };
 		5A31C2A81468AEDA001E0B9F /* libiconv.2.4.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A31C2A51468AEDA001E0B9F /* libiconv.2.4.0.dylib */; };
+		5A4A9CA0146CB15900D669DB /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4A9C9F146CB15900D669DB /* libstdc++.dylib */; };
 		5A9CF422146B16C900F93B7E /* 7678.dic in Resources */ = {isa = PBXBuildFile; fileRef = 5A9CF420146B16C900F93B7E /* 7678.dic */; };
 		5A9CF423146B16C900F93B7E /* 7678.languagemodel in Resources */ = {isa = PBXBuildFile; fileRef = 5A9CF421146B16C900F93B7E /* 7678.languagemodel */; };
 		5A9CF477146B4A4C00F93B7E /* libOpenEarsLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A9CF476146B4A4C00F93B7E /* libOpenEarsLibrary.a */; };
+		5AA97422146CA5F300300B71 /* haarcascade_frontalface_alt2.xml.gz in Resources */ = {isa = PBXBuildFile; fileRef = 5AA9741C146CA5F300300B71 /* haarcascade_frontalface_alt2.xml.gz */; };
+		5AA97423146CA5F300300B71 /* libcv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA9741D146CA5F300300B71 /* libcv.a */; };
+		5AA97424146CA5F300300B71 /* libcvaux.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA9741E146CA5F300300B71 /* libcvaux.a */; };
+		5AA97425146CA5F300300B71 /* libcxcore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA9741F146CA5F300300B71 /* libcxcore.a */; };
+		5AA97426146CA5F300300B71 /* libml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA97420146CA5F300300B71 /* libml.a */; };
+		5AA9742A146CA7FE00300B71 /* UIImageOpenCV.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA97429146CA7FE00300B71 /* UIImageOpenCV.m */; };
+		5AA9742C146CAD0600300B71 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA9742B146CAD0600300B71 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,9 +98,33 @@
 		5A31C2A31468AEDA001E0B9F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		5A31C2A41468AEDA001E0B9F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		5A31C2A51468AEDA001E0B9F /* libiconv.2.4.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.4.0.dylib; path = usr/lib/libiconv.2.4.0.dylib; sourceTree = SDKROOT; };
+		5A4A9C9F146CB15900D669DB /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/gcc/arm-apple-darwin10/4.0.1/libstdc++.dylib"; sourceTree = SDKROOT; };
 		5A9CF420146B16C900F93B7E /* 7678.dic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 7678.dic; sourceTree = "<group>"; };
 		5A9CF421146B16C900F93B7E /* 7678.languagemodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 7678.languagemodel; sourceTree = "<group>"; };
 		5A9CF476146B4A4C00F93B7E /* libOpenEarsLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libOpenEarsLibrary.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AA9740E146CA5F300300B71 /* cv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cv.h; sourceTree = "<group>"; };
+		5AA9740F146CA5F300300B71 /* cvaux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cvaux.h; sourceTree = "<group>"; };
+		5AA97410146CA5F300300B71 /* cvaux.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cvaux.hpp; sourceTree = "<group>"; };
+		5AA97411146CA5F300300B71 /* cvcompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cvcompat.h; sourceTree = "<group>"; };
+		5AA97412146CA5F300300B71 /* cvmat.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cvmat.hpp; sourceTree = "<group>"; };
+		5AA97413146CA5F300300B71 /* cvstreams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cvstreams.h; sourceTree = "<group>"; };
+		5AA97414146CA5F300300B71 /* cvtypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cvtypes.h; sourceTree = "<group>"; };
+		5AA97415146CA5F300300B71 /* cvver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cvver.h; sourceTree = "<group>"; };
+		5AA97416146CA5F300300B71 /* cvvidsurv.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cvvidsurv.hpp; sourceTree = "<group>"; };
+		5AA97417146CA5F300300B71 /* cxcore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cxcore.h; sourceTree = "<group>"; };
+		5AA97418146CA5F300300B71 /* cxcore.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cxcore.hpp; sourceTree = "<group>"; };
+		5AA97419146CA5F300300B71 /* cxerror.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cxerror.h; sourceTree = "<group>"; };
+		5AA9741A146CA5F300300B71 /* cxmisc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cxmisc.h; sourceTree = "<group>"; };
+		5AA9741B146CA5F300300B71 /* cxtypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cxtypes.h; sourceTree = "<group>"; };
+		5AA9741C146CA5F300300B71 /* haarcascade_frontalface_alt2.xml.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = haarcascade_frontalface_alt2.xml.gz; sourceTree = "<group>"; };
+		5AA9741D146CA5F300300B71 /* libcv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcv.a; sourceTree = "<group>"; };
+		5AA9741E146CA5F300300B71 /* libcvaux.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcvaux.a; sourceTree = "<group>"; };
+		5AA9741F146CA5F300300B71 /* libcxcore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcxcore.a; sourceTree = "<group>"; };
+		5AA97420146CA5F300300B71 /* libml.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libml.a; sourceTree = "<group>"; };
+		5AA97421146CA5F300300B71 /* ml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ml.h; sourceTree = "<group>"; };
+		5AA97428146CA7FE00300B71 /* UIImageOpenCV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageOpenCV.h; sourceTree = "<group>"; };
+		5AA97429146CA7FE00300B71 /* UIImageOpenCV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageOpenCV.m; sourceTree = "<group>"; };
+		5AA9742B146CAD0600300B71 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +132,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A4A9CA0146CB15900D669DB /* libstdc++.dylib in Frameworks */,
+				5AA9742C146CAD0600300B71 /* libz.dylib in Frameworks */,
 				5A9CF477146B4A4C00F93B7E /* libOpenEarsLibrary.a in Frameworks */,
 				5A31C2A61468AEDA001E0B9F /* AudioToolbox.framework in Frameworks */,
 				5A31C2A71468AEDA001E0B9F /* AVFoundation.framework in Frameworks */,
@@ -107,6 +141,10 @@
 				5A31C235146860C3001E0B9F /* UIKit.framework in Frameworks */,
 				5A31C237146860C3001E0B9F /* Foundation.framework in Frameworks */,
 				5A31C239146860C3001E0B9F /* CoreGraphics.framework in Frameworks */,
+				5AA97423146CA5F300300B71 /* libcv.a in Frameworks */,
+				5AA97424146CA5F300300B71 /* libcvaux.a in Frameworks */,
+				5AA97425146CA5F300300B71 /* libcxcore.a in Frameworks */,
+				5AA97426146CA5F300300B71 /* libml.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +154,9 @@
 		5A31C225146860C3001E0B9F = {
 			isa = PBXGroup;
 			children = (
+				5A4A9C9F146CB15900D669DB /* libstdc++.dylib */,
+				5AA9742B146CAD0600300B71 /* libz.dylib */,
+				5AA9740D146CA5F300300B71 /* opencv */,
 				5A9CF476146B4A4C00F93B7E /* libOpenEarsLibrary.a */,
 				5A31C2A31468AEDA001E0B9F /* AudioToolbox.framework */,
 				5A31C2A41468AEDA001E0B9F /* AVFoundation.framework */,
@@ -152,6 +193,7 @@
 		5A31C23A146860C3001E0B9F /* irobot */ = {
 			isa = PBXGroup;
 			children = (
+				5AA97427146CA7A300300B71 /* OpenCV */,
 				5A31C25C14687E11001E0B9F /* resources */,
 				5A31C243146860C3001E0B9F /* irobotAppDelegate.h */,
 				5A31C244146860C3001E0B9F /* irobotAppDelegate.m */,
@@ -211,6 +253,42 @@
 			);
 			name = hub4wsj_sc_8k;
 			path = "OpenEars/CMULibraries/pocketsphinx-0.6.1/model/hmm/en_US/hub4wsj_sc_8k";
+			sourceTree = "<group>";
+		};
+		5AA9740D146CA5F300300B71 /* opencv */ = {
+			isa = PBXGroup;
+			children = (
+				5AA9740E146CA5F300300B71 /* cv.h */,
+				5AA9740F146CA5F300300B71 /* cvaux.h */,
+				5AA97410146CA5F300300B71 /* cvaux.hpp */,
+				5AA97411146CA5F300300B71 /* cvcompat.h */,
+				5AA97412146CA5F300300B71 /* cvmat.hpp */,
+				5AA97413146CA5F300300B71 /* cvstreams.h */,
+				5AA97414146CA5F300300B71 /* cvtypes.h */,
+				5AA97415146CA5F300300B71 /* cvver.h */,
+				5AA97416146CA5F300300B71 /* cvvidsurv.hpp */,
+				5AA97417146CA5F300300B71 /* cxcore.h */,
+				5AA97418146CA5F300300B71 /* cxcore.hpp */,
+				5AA97419146CA5F300300B71 /* cxerror.h */,
+				5AA9741A146CA5F300300B71 /* cxmisc.h */,
+				5AA9741B146CA5F300300B71 /* cxtypes.h */,
+				5AA9741C146CA5F300300B71 /* haarcascade_frontalface_alt2.xml.gz */,
+				5AA9741D146CA5F300300B71 /* libcv.a */,
+				5AA9741E146CA5F300300B71 /* libcvaux.a */,
+				5AA9741F146CA5F300300B71 /* libcxcore.a */,
+				5AA97420146CA5F300300B71 /* libml.a */,
+				5AA97421146CA5F300300B71 /* ml.h */,
+			);
+			path = opencv;
+			sourceTree = "<group>";
+		};
+		5AA97427146CA7A300300B71 /* OpenCV */ = {
+			isa = PBXGroup;
+			children = (
+				5AA97428146CA7FE00300B71 /* UIImageOpenCV.h */,
+				5AA97429146CA7FE00300B71 /* UIImageOpenCV.m */,
+			);
+			name = OpenCV;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,6 +374,7 @@
 				5A31C29E1468AE00001E0B9F /* variances in Resources */,
 				5A9CF422146B16C900F93B7E /* 7678.dic in Resources */,
 				5A9CF423146B16C900F93B7E /* 7678.languagemodel in Resources */,
+				5AA97422146CA5F300300B71 /* haarcascade_frontalface_alt2.xml.gz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +388,7 @@
 				5A31C242146860C3001E0B9F /* main.m in Sources */,
 				5A31C245146860C3001E0B9F /* irobotAppDelegate.m in Sources */,
 				5A31C24B146860C3001E0B9F /* irobotViewController.mm in Sources */,
+				5AA9742A146CA7FE00300B71 /* UIImageOpenCV.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +488,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/opencv\"",
+					"\"$(SDKROOT)/usr/lib/gcc/arm-apple-darwin10/4.0.1\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -425,6 +507,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/opencv\"",
+					"\"$(SDKROOT)/usr/lib/gcc/arm-apple-darwin10/4.0.1\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;

@@ -37,6 +37,7 @@
 		5A4A9CA4146CBB3200D669DB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4A9CA2146CBB3200D669DB /* CoreMedia.framework */; };
 		5A4A9CA5146CBB3200D669DB /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4A9CA3146CBB3200D669DB /* CoreVideo.framework */; };
 		5A4A9CC0146CCD5800D669DB /* UIImageResizing.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4A9CBF146CCD5800D669DB /* UIImageResizing.m */; };
+		5A4E390C14706F560067CBA1 /* dance.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 5A4E390B14706F560067CBA1 /* dance.m4a */; };
 		5A9CF422146B16C900F93B7E /* 7678.dic in Resources */ = {isa = PBXBuildFile; fileRef = 5A9CF420146B16C900F93B7E /* 7678.dic */; };
 		5A9CF423146B16C900F93B7E /* 7678.languagemodel in Resources */ = {isa = PBXBuildFile; fileRef = 5A9CF421146B16C900F93B7E /* 7678.languagemodel */; };
 		5A9CF477146B4A4C00F93B7E /* libOpenEarsLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A9CF476146B4A4C00F93B7E /* libOpenEarsLibrary.a */; };
@@ -107,6 +108,7 @@
 		5A4A9CA3146CBB3200D669DB /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		5A4A9CBE146CCD5800D669DB /* UIImageResizing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageResizing.h; sourceTree = "<group>"; };
 		5A4A9CBF146CCD5800D669DB /* UIImageResizing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageResizing.m; sourceTree = "<group>"; };
+		5A4E390B14706F560067CBA1 /* dance.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = dance.m4a; sourceTree = "<group>"; };
 		5A9CF420146B16C900F93B7E /* 7678.dic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 7678.dic; sourceTree = "<group>"; };
 		5A9CF421146B16C900F93B7E /* 7678.languagemodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 7678.languagemodel; sourceTree = "<group>"; };
 		5A9CF476146B4A4C00F93B7E /* libOpenEarsLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libOpenEarsLibrary.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -240,6 +242,7 @@
 				5A31C26D14688B3B001E0B9F /* irobot2.jpg */,
 				5A9CF420146B16C900F93B7E /* 7678.dic */,
 				5A9CF421146B16C900F93B7E /* 7678.languagemodel */,
+				5A4E390B14706F560067CBA1 /* dance.m4a */,
 			);
 			name = resources;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				5A9CF422146B16C900F93B7E /* 7678.dic in Resources */,
 				5A9CF423146B16C900F93B7E /* 7678.languagemodel in Resources */,
 				5AA97422146CA5F300300B71 /* haarcascade_frontalface_alt2.xml.gz in Resources */,
+				5A4E390C14706F560067CBA1 /* dance.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

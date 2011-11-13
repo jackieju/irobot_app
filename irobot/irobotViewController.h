@@ -41,6 +41,10 @@
     UIImage* capturedImage;
      UIImage* detectingImage;
     double last_cmd_time; // last tick count sending move msg to robot
+    
+    
+    // play sounds/music
+    AVAudioPlayer *player;
 }
 @property (nonatomic, retain) IBOutlet UITextView *textView;
 @property (nonatomic, retain) IBOutlet UITextView *statusView;

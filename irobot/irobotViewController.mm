@@ -54,6 +54,7 @@ static CvMemStorage *storage = 0;
     
    // self.camera = nil;
     [statusView release];
+    [player release];
     [super dealloc];
 }
 
@@ -90,6 +91,19 @@ static CvMemStorage *storage = 0;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    // prepare player
+    if (player)
+         [player release];
+    NSString *soundPath=[[NSBundle mainBundle] pathForResource:@"dance" ofType:@"m4a"];
+    
+    NSURL *soundUrl=[[NSURL alloc] initFileURLWithPath:soundPath];
+    
+    player=[[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
+    [player prepareToPlay];
+    
+    // init openear
     [self.openEarsEventsObserver setDelegate:self]; // Make this class the delegate of OpenEarsObserver so we can get all of the messages about what OpenEars is doing.
 
     [background setImage:[UIImage imageNamed:@"irobot2.jpg"]];
@@ -270,15 +284,22 @@ static CvMemStorage *storage = 0;
             [request release];
         }
         else if([hypothesis isEqualToString:@"DANCE"]) {
+            bCmd = true; NSLog(@"===>DANCE");
+            
+            // wink
             left_eye.animationDuration = 0.2;
             left_eye.animationRepeatCount = 1;
             [left_eye startAnimating];
-            bCmd = true; NSLog(@"===>DANCE");
+         
+            // send command to robot
             NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];         
             [request setURL:[NSURL URLWithString:@"http://169.254.203.23/dance"]];
             [request setHTTPMethod:@"GET"];
             //  NSMutableData* buf = [[NSMutableData alloc] initWithLength:0];
             NSURLConnection* connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+            
+            // play music
+            [player play];
             [request release];
         }
         else if([hypothesis isEqualToString:@"TRACK MY FACE"]) {
@@ -917,4 +938,15 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     
     return (image);
 }
+/*
+// play sounds/music
+- (void) playMusic:(NSSTRING*)src{
+    NSString *soundPath=[[NSBundle mainBundle] pathForResource:@"dance" ofType:@"mp3"];
+  
+    NSURL *soundUrl=[[NSURL alloc] initFileURLWithPath:soundPath];
+    
+    player=[[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
+    [player prepareToPlay];
+
+}*/
 @end

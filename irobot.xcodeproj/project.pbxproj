@@ -34,6 +34,9 @@
 		5A31C2A71468AEDA001E0B9F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A31C2A41468AEDA001E0B9F /* AVFoundation.framework */; };
 		5A31C2A81468AEDA001E0B9F /* libiconv.2.4.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A31C2A51468AEDA001E0B9F /* libiconv.2.4.0.dylib */; };
 		5A4A9CA0146CB15900D669DB /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4A9C9F146CB15900D669DB /* libstdc++.dylib */; };
+		5A4A9CA4146CBB3200D669DB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4A9CA2146CBB3200D669DB /* CoreMedia.framework */; };
+		5A4A9CA5146CBB3200D669DB /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4A9CA3146CBB3200D669DB /* CoreVideo.framework */; };
+		5A4A9CC0146CCD5800D669DB /* UIImageResizing.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4A9CBF146CCD5800D669DB /* UIImageResizing.m */; };
 		5A9CF422146B16C900F93B7E /* 7678.dic in Resources */ = {isa = PBXBuildFile; fileRef = 5A9CF420146B16C900F93B7E /* 7678.dic */; };
 		5A9CF423146B16C900F93B7E /* 7678.languagemodel in Resources */ = {isa = PBXBuildFile; fileRef = 5A9CF421146B16C900F93B7E /* 7678.languagemodel */; };
 		5A9CF477146B4A4C00F93B7E /* libOpenEarsLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A9CF476146B4A4C00F93B7E /* libOpenEarsLibrary.a */; };
@@ -99,6 +102,11 @@
 		5A31C2A41468AEDA001E0B9F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		5A31C2A51468AEDA001E0B9F /* libiconv.2.4.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.4.0.dylib; path = usr/lib/libiconv.2.4.0.dylib; sourceTree = SDKROOT; };
 		5A4A9C9F146CB15900D669DB /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/gcc/arm-apple-darwin10/4.0.1/libstdc++.dylib"; sourceTree = SDKROOT; };
+		5A4A9CA1146CBAED00D669DB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		5A4A9CA2146CBB3200D669DB /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		5A4A9CA3146CBB3200D669DB /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		5A4A9CBE146CCD5800D669DB /* UIImageResizing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageResizing.h; sourceTree = "<group>"; };
+		5A4A9CBF146CCD5800D669DB /* UIImageResizing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageResizing.m; sourceTree = "<group>"; };
 		5A9CF420146B16C900F93B7E /* 7678.dic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 7678.dic; sourceTree = "<group>"; };
 		5A9CF421146B16C900F93B7E /* 7678.languagemodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 7678.languagemodel; sourceTree = "<group>"; };
 		5A9CF476146B4A4C00F93B7E /* libOpenEarsLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libOpenEarsLibrary.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,11 +140,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A4A9CA4146CBB3200D669DB /* CoreMedia.framework in Frameworks */,
+				5A4A9CA5146CBB3200D669DB /* CoreVideo.framework in Frameworks */,
+				5A31C2A71468AEDA001E0B9F /* AVFoundation.framework in Frameworks */,
 				5A4A9CA0146CB15900D669DB /* libstdc++.dylib in Frameworks */,
 				5AA9742C146CAD0600300B71 /* libz.dylib in Frameworks */,
 				5A9CF477146B4A4C00F93B7E /* libOpenEarsLibrary.a in Frameworks */,
 				5A31C2A61468AEDA001E0B9F /* AudioToolbox.framework in Frameworks */,
-				5A31C2A71468AEDA001E0B9F /* AVFoundation.framework in Frameworks */,
 				5A31C2A81468AEDA001E0B9F /* libiconv.2.4.0.dylib in Frameworks */,
 				5A31C235146860C3001E0B9F /* UIKit.framework in Frameworks */,
 				5A31C237146860C3001E0B9F /* Foundation.framework in Frameworks */,
@@ -154,6 +164,9 @@
 		5A31C225146860C3001E0B9F = {
 			isa = PBXGroup;
 			children = (
+				5A4A9CA2146CBB3200D669DB /* CoreMedia.framework */,
+				5A4A9CA3146CBB3200D669DB /* CoreVideo.framework */,
+				5A4A9CA1146CBAED00D669DB /* AVFoundation.framework */,
 				5A4A9C9F146CB15900D669DB /* libstdc++.dylib */,
 				5AA9742B146CAD0600300B71 /* libz.dylib */,
 				5AA9740D146CA5F300300B71 /* opencv */,
@@ -285,6 +298,8 @@
 		5AA97427146CA7A300300B71 /* OpenCV */ = {
 			isa = PBXGroup;
 			children = (
+				5A4A9CBE146CCD5800D669DB /* UIImageResizing.h */,
+				5A4A9CBF146CCD5800D669DB /* UIImageResizing.m */,
 				5AA97428146CA7FE00300B71 /* UIImageOpenCV.h */,
 				5AA97429146CA7FE00300B71 /* UIImageOpenCV.m */,
 			);
@@ -389,6 +404,7 @@
 				5A31C245146860C3001E0B9F /* irobotAppDelegate.m in Sources */,
 				5A31C24B146860C3001E0B9F /* irobotViewController.mm in Sources */,
 				5AA9742A146CA7FE00300B71 /* UIImageOpenCV.m in Sources */,
+				5A4A9CC0146CCD5800D669DB /* UIImageResizing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

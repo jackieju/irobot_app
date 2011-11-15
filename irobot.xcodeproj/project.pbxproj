@@ -38,8 +38,6 @@
 		5A4A9CA5146CBB3200D669DB /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4A9CA3146CBB3200D669DB /* CoreVideo.framework */; };
 		5A4A9CC0146CCD5800D669DB /* UIImageResizing.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4A9CBF146CCD5800D669DB /* UIImageResizing.m */; };
 		5A4E390C14706F560067CBA1 /* dance.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 5A4E390B14706F560067CBA1 /* dance.m4a */; };
-		5A9CF422146B16C900F93B7E /* 7678.dic in Resources */ = {isa = PBXBuildFile; fileRef = 5A9CF420146B16C900F93B7E /* 7678.dic */; };
-		5A9CF423146B16C900F93B7E /* 7678.languagemodel in Resources */ = {isa = PBXBuildFile; fileRef = 5A9CF421146B16C900F93B7E /* 7678.languagemodel */; };
 		5A9CF477146B4A4C00F93B7E /* libOpenEarsLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A9CF476146B4A4C00F93B7E /* libOpenEarsLibrary.a */; };
 		5AA97422146CA5F300300B71 /* haarcascade_frontalface_alt2.xml.gz in Resources */ = {isa = PBXBuildFile; fileRef = 5AA9741C146CA5F300300B71 /* haarcascade_frontalface_alt2.xml.gz */; };
 		5AA97423146CA5F300300B71 /* libcv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA9741D146CA5F300300B71 /* libcv.a */; };
@@ -48,6 +46,8 @@
 		5AA97426146CA5F300300B71 /* libml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA97420146CA5F300300B71 /* libml.a */; };
 		5AA9742A146CA7FE00300B71 /* UIImageOpenCV.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA97429146CA7FE00300B71 /* UIImageOpenCV.m */; };
 		5AA9742C146CAD0600300B71 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA9742B146CAD0600300B71 /* libz.dylib */; };
+		5ABE0E8F1471D8590043EC50 /* 7678.languagemodel in Resources */ = {isa = PBXBuildFile; fileRef = 5ABE0E8D1471D8590043EC50 /* 7678.languagemodel */; };
+		5ABE0E901471D8590043EC50 /* 7678.dic in Resources */ = {isa = PBXBuildFile; fileRef = 5ABE0E8E1471D8590043EC50 /* 7678.dic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,8 +109,6 @@
 		5A4A9CBE146CCD5800D669DB /* UIImageResizing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageResizing.h; sourceTree = "<group>"; };
 		5A4A9CBF146CCD5800D669DB /* UIImageResizing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageResizing.m; sourceTree = "<group>"; };
 		5A4E390B14706F560067CBA1 /* dance.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = dance.m4a; sourceTree = "<group>"; };
-		5A9CF420146B16C900F93B7E /* 7678.dic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 7678.dic; sourceTree = "<group>"; };
-		5A9CF421146B16C900F93B7E /* 7678.languagemodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 7678.languagemodel; sourceTree = "<group>"; };
 		5A9CF476146B4A4C00F93B7E /* libOpenEarsLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libOpenEarsLibrary.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AA9740E146CA5F300300B71 /* cv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cv.h; sourceTree = "<group>"; };
 		5AA9740F146CA5F300300B71 /* cvaux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cvaux.h; sourceTree = "<group>"; };
@@ -135,6 +133,8 @@
 		5AA97428146CA7FE00300B71 /* UIImageOpenCV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageOpenCV.h; sourceTree = "<group>"; };
 		5AA97429146CA7FE00300B71 /* UIImageOpenCV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageOpenCV.m; sourceTree = "<group>"; };
 		5AA9742B146CAD0600300B71 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		5ABE0E8D1471D8590043EC50 /* 7678.languagemodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 7678.languagemodel; sourceTree = "<group>"; };
+		5ABE0E8E1471D8590043EC50 /* 7678.dic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 7678.dic; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,9 +240,9 @@
 				5A31C27C1468A668001E0B9F /* eye_1.png */,
 				5A31C27D1468A668001E0B9F /* eye_2.png */,
 				5A31C26D14688B3B001E0B9F /* irobot2.jpg */,
-				5A9CF420146B16C900F93B7E /* 7678.dic */,
-				5A9CF421146B16C900F93B7E /* 7678.languagemodel */,
 				5A4E390B14706F560067CBA1 /* dance.m4a */,
+				5ABE0E8D1471D8590043EC50 /* 7678.languagemodel */,
+				5ABE0E8E1471D8590043EC50 /* 7678.dic */,
 			);
 			name = resources;
 			sourceTree = "<group>";
@@ -390,10 +390,10 @@
 				5A31C29C1468AE00001E0B9F /* sendump in Resources */,
 				5A31C29D1468AE00001E0B9F /* transition_matrices in Resources */,
 				5A31C29E1468AE00001E0B9F /* variances in Resources */,
-				5A9CF422146B16C900F93B7E /* 7678.dic in Resources */,
-				5A9CF423146B16C900F93B7E /* 7678.languagemodel in Resources */,
 				5AA97422146CA5F300300B71 /* haarcascade_frontalface_alt2.xml.gz in Resources */,
 				5A4E390C14706F560067CBA1 /* dance.m4a in Resources */,
+				5ABE0E8F1471D8590043EC50 /* 7678.languagemodel in Resources */,
+				5ABE0E901471D8590043EC50 /* 7678.dic in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

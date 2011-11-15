@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "irobot/irobotViewController.mm"
-         timestampString = "342912026.29865"
+         timestampString = "343004900.54068"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "231"
-         endingLineNumber = "231"
+         startingLineNumber = "239"
+         endingLineNumber = "239"
          landmarkName = "-pocketsphinxDidReceiveHypothesis:recognitionScore:utteranceID:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -189,11 +189,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "irobot/irobotViewController.mm"
-         timestampString = "342912026.29865"
+         timestampString = "343004900.54068"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "211"
-         endingLineNumber = "211"
+         startingLineNumber = "219"
+         endingLineNumber = "219"
          landmarkName = "-onTimer"
          landmarkType = "5">
       </FileBreakpoint>
@@ -203,11 +203,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "irobot/irobotViewController.mm"
-         timestampString = "342912026.29865"
+         timestampString = "343006777.553398"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "897"
-         endingLineNumber = "897"
+         startingLineNumber = "991"
+         endingLineNumber = "991"
          landmarkName = "-captureOutput:didOutputSampleBuffer:fromConnection:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -217,11 +217,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "irobot/irobotViewController.mm"
-         timestampString = "342912026.29865"
+         timestampString = "343006777.553398"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "723"
-         endingLineNumber = "723"
+         startingLineNumber = "807"
+         endingLineNumber = "807"
          landmarkName = "-detectFaceThread"
          landmarkType = "5">
       </FileBreakpoint>
@@ -231,11 +231,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "irobot/irobotViewController.mm"
-         timestampString = "342912026.29865"
+         timestampString = "343006777.553398"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "814"
-         endingLineNumber = "814"
+         startingLineNumber = "900"
+         endingLineNumber = "900"
          landmarkName = "-startDetection"
          landmarkType = "5">
       </FileBreakpoint>
@@ -245,11 +245,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "irobot/irobotViewController.mm"
-         timestampString = "342912026.29865"
+         timestampString = "343006777.553398"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "808"
-         endingLineNumber = "808"
+         startingLineNumber = "892"
+         endingLineNumber = "892"
          landmarkName = "-detectFaceThread"
          landmarkType = "5">
       </FileBreakpoint>
@@ -259,11 +259,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "irobot/irobotViewController.mm"
-         timestampString = "342912026.29865"
+         timestampString = "343006777.553398"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "782"
-         endingLineNumber = "782"
+         startingLineNumber = "866"
+         endingLineNumber = "866"
          landmarkName = "-detectFaceThread"
          landmarkType = "5">
       </FileBreakpoint>
@@ -273,11 +273,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "irobot/irobotViewController.mm"
-         timestampString = "342912026.29865"
+         timestampString = "343004900.54068"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "154"
-         endingLineNumber = "154"
+         startingLineNumber = "162"
+         endingLineNumber = "162"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -287,11 +287,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "irobot/irobotViewController.mm"
-         timestampString = "342912026.29865"
+         timestampString = "343006777.553398"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "636"
-         endingLineNumber = "636"
+         startingLineNumber = "674"
+         endingLineNumber = "674"
          landmarkName = "-detectFace:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -301,7 +301,49 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "irobot/irobotViewController.mm"
-         timestampString = "342912026.29865"
+         timestampString = "343006777.553398"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "673"
+         endingLineNumber = "673"
+         landmarkName = "-detectFace:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "irobot/irobotViewController.mm"
+         timestampString = "343004900.54068"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "183"
+         endingLineNumber = "183"
+         landmarkName = "-shouldAutorotateToInterfaceOrientation:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "irobot/irobotViewController.mm"
+         timestampString = "343006777.553398"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "633"
+         endingLineNumber = "633"
+         landmarkName = "-detectFace:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "irobot/irobotViewController.mm"
+         timestampString = "343006777.553398"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "635"
@@ -315,25 +357,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "irobot/irobotViewController.mm"
-         timestampString = "342912026.29865"
+         timestampString = "343006777.553398"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "175"
-         endingLineNumber = "175"
-         landmarkName = "-shouldAutorotateToInterfaceOrientation:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "irobot/irobotViewController.mm"
-         timestampString = "342912026.29865"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "595"
-         endingLineNumber = "595"
+         startingLineNumber = "638"
+         endingLineNumber = "638"
          landmarkName = "-detectFace:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -343,11 +371,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "irobot/irobotViewController.mm"
-         timestampString = "342912026.29865"
+         timestampString = "343006777.553398"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "597"
-         endingLineNumber = "597"
+         startingLineNumber = "682"
+         endingLineNumber = "682"
          landmarkName = "-detectFace:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -357,11 +385,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "irobot/irobotViewController.mm"
-         timestampString = "342912026.29865"
+         timestampString = "343006777.553398"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "600"
-         endingLineNumber = "600"
+         startingLineNumber = "678"
+         endingLineNumber = "678"
          landmarkName = "-detectFace:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -371,11 +399,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "irobot/irobotViewController.mm"
-         timestampString = "342912026.29865"
+         timestampString = "343006777.553398"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "644"
-         endingLineNumber = "644"
+         startingLineNumber = "622"
+         endingLineNumber = "622"
          landmarkName = "-detectFace:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -385,39 +413,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "irobot/irobotViewController.mm"
-         timestampString = "342912026.29865"
+         timestampString = "343006777.553398"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "640"
-         endingLineNumber = "640"
-         landmarkName = "-detectFace:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "irobot/irobotViewController.mm"
-         timestampString = "342912026.29865"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "584"
-         endingLineNumber = "584"
-         landmarkName = "-detectFace:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "irobot/irobotViewController.mm"
-         timestampString = "342912026.29865"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "771"
-         endingLineNumber = "771"
+         startingLineNumber = "855"
+         endingLineNumber = "855"
          landmarkName = "-detectFaceThread"
          landmarkType = "5">
       </FileBreakpoint>
@@ -427,11 +427,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "irobot/irobotViewController.mm"
-         timestampString = "342912026.29865"
+         timestampString = "343006777.553398"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "718"
-         endingLineNumber = "718"
+         startingLineNumber = "756"
+         endingLineNumber = "756"
          landmarkName = "-faceDetected"
          landmarkType = "5">
       </FileBreakpoint>
@@ -441,11 +441,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "irobot/irobotViewController.mm"
-         timestampString = "342912026.29865"
+         timestampString = "343006777.553398"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "687"
-         endingLineNumber = "687"
+         startingLineNumber = "725"
+         endingLineNumber = "725"
          landmarkName = "-faceDetected"
          landmarkType = "5">
       </FileBreakpoint>
@@ -455,11 +455,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "irobot/irobotViewController.mm"
-         timestampString = "342912026.29865"
+         timestampString = "343006777.553398"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "687"
-         endingLineNumber = "687"
+         startingLineNumber = "725"
+         endingLineNumber = "725"
          landmarkName = "-faceDetected"
          landmarkType = "5">
       </FileBreakpoint>
@@ -469,12 +469,152 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "irobot/irobotViewController.mm"
-         timestampString = "342912026.29865"
+         timestampString = "343006777.553398"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "663"
-         endingLineNumber = "663"
+         startingLineNumber = "701"
+         endingLineNumber = "701"
          landmarkName = "-faceDetected"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "irobot/irobotViewController.mm"
+         timestampString = "343006777.553398"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1065"
+         endingLineNumber = "1065"
+         landmarkName = "-startTorchMode"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "irobot/irobotViewController.mm"
+         timestampString = "343006777.553398"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1050"
+         endingLineNumber = "1050"
+         landmarkName = "-stopTorchMode"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "irobot/irobotViewController.mm"
+         timestampString = "343004900.54068"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "327"
+         endingLineNumber = "327"
+         landmarkName = "-pocketsphinxDidReceiveHypothesis:recognitionScore:utteranceID:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "irobot/irobotViewController.mm"
+         timestampString = "343006777.553398"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "898"
+         endingLineNumber = "898"
+         landmarkName = "-startDetection"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "irobot/irobotViewController.mm"
+         timestampString = "343006777.553398"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "904"
+         endingLineNumber = "904"
+         landmarkName = "-stopDetection"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "irobot/irobotViewController.mm"
+         timestampString = "343006777.553398"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "915"
+         endingLineNumber = "915"
+         landmarkName = "-setupCaptureSession"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "irobot/irobotViewController.mm"
+         timestampString = "343006777.553398"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1062"
+         endingLineNumber = "1062"
+         landmarkName = "-startTorchMode"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "irobot/irobotViewController.mm"
+         timestampString = "343006777.553398"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1103"
+         endingLineNumber = "1103"
+         landmarkName = "-takePhoto"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "irobot/irobotViewController.mm"
+         timestampString = "343006777.553398"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "760"
+         endingLineNumber = "760"
+         landmarkName = "-rotateImage:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "irobot/irobotViewController.mm"
+         timestampString = "343006777.553398"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1112"
+         endingLineNumber = "1112"
+         landmarkName = "-takePhoto"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

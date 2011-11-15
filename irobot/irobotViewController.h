@@ -37,7 +37,7 @@
     BOOL detecting;
        UIInterfaceOrientation orientation;
      CGRect face;
-     AVCaptureSession*            session;
+     AVCaptureSession*            avSessionForFaceDetection;
     UIImage* capturedImage;
      UIImage* detectingImage;
     double last_cmd_time; // last tick count sending move msg to robot
@@ -45,6 +45,9 @@
     
     // play sounds/music
     AVAudioPlayer *player;
+    
+    // torch mode
+    AVCaptureSession* avSessionForTorch;
 }
 @property (nonatomic, retain) IBOutlet UITextView *textView;
 @property (nonatomic, retain) IBOutlet UITextView *statusView;
@@ -69,9 +72,19 @@
 - (void) setupCaptureSession;
 - (void) faceDetected; // update ui and robot after detected face
 - (CvSeq*) detectFace:(UIImage*)viewImage;
-@property (nonatomic, retain)   AVCaptureSession*            session;
+@property (nonatomic, retain)   AVCaptureSession*            avSessionForFaceDetection;
 @property (nonatomic, retain)   UIImage* capturedImage;
 @property (nonatomic, retain)   UIImage* detectingImage;
 @property (assign) double last_cmd_time;
 - (void) sendCmdToRobot:(NSString*) cmd;
+
+// torch
+- (void) startTorchMode;
+- (void) stopTorchMode;
+@property (nonatomic, retain)    AVCaptureSession* avSessionForTorch;
+
+
+// take photo
+- (UIImage*) rotateImage:(UIImage*) imgsrc;
+- (void) takePhoto;
 @end

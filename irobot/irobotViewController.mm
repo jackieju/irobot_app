@@ -10,6 +10,7 @@
 #import "irobotViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
+
 // import for OpenEars 
 #import "AudioSessionManager.h"
 #import "PocketsphinxController.h"
@@ -33,12 +34,15 @@
 
 //@synthesize camera;
 @synthesize model;
-@synthesize session;
+@synthesize avSessionForFaceDetection;
 @synthesize capturedImage;
 @synthesize detecting;
 @synthesize last_cmd_time;
 @synthesize detectingImage;;
 static CvMemStorage *storage = 0;
+
+// torch mode
+@synthesize avSessionForTorch;
 
 - (void)dealloc
 {
@@ -55,6 +59,9 @@ static CvMemStorage *storage = 0;
    // self.camera = nil;
     [statusView release];
     [player release];
+    
+    [avSessionForFaceDetection release];
+    [avSessionForTorch release];
     [super dealloc];
 }
 
@@ -152,6 +159,7 @@ static CvMemStorage *storage = 0;
     [statusView setFrame:CGRectMake(0, 0, 480, 65) ];
     [self setupCaptureSession];
     //[self startDetection];
+    //[self startTorchMode];
 }
 
 
@@ -203,7 +211,7 @@ static CvMemStorage *storage = 0;
     self.textView.text = [NSString stringWithFormat:@"Pocketsphinx Input level:%f",[self.pocketsphinxController pocketsphinxInputLevel]]; 
     //pocketsphinxInputLevel is an OpenEars method of the class PocketsphinxController.
     
-  //   [background setImage:capturedImage];
+    // [background setImage:capturedImage];
     //CvSeq* faces = [self detectFace:[capturedImage copy]];
     /*if (faces->total>0){
          [background setImage:capturedImage];
@@ -283,7 +291,7 @@ static CvMemStorage *storage = 0;
             NSURLConnection* connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
             [request release];
         }
-        else if([hypothesis isEqualToString:@"DANCE"]) {
+        else if([hypothesis hasSuffix:@"DANCE"]) {
             bCmd = true; NSLog(@"===>DANCE");
             
             // wink
@@ -302,13 +310,37 @@ static CvMemStorage *storage = 0;
             [player play];
             [request release];
         }
-        else if([hypothesis isEqualToString:@"TRACK MY FACE"]) {
+        else if([hypothesis isEqualToString:@"TRACK MY FACE"] || [hypothesis hasPrefix:@"TRACK"] || [hypothesis hasSuffix:@"FACE"]) {
             left_eye.animationDuration = 0.2;
             left_eye.animationRepeatCount = 1;
             [left_eye startAnimating];
             bCmd = true; NSLog(@"===>TRACK MY FACE");
             if (!self.detecting)
                 [self startDetection];
+        }        
+        else if([hypothesis hasPrefix:@"WALL E SHARE"] || [hypothesis hasSuffix:@"SOME LIGHT"]) {
+            left_eye.animationDuration = 0.2;
+            left_eye.animationRepeatCount = 1;
+            [left_eye startAnimating];
+            bCmd = true; NSLog(@"===>WALL E SHARE ME SOME LIGHT");
+             [self sendCmdToRobot:@"/mhud=0"];
+            [self startTorchMode];
+        }
+        else if([hypothesis hasPrefix:@"WALL E TURN OFF"]) {
+            left_eye.animationDuration = 0.2;
+            left_eye.animationRepeatCount = 1;
+            [left_eye startAnimating];
+            bCmd = true; NSLog(@"===>WALL E TURN OFF LIGHT");
+            [self stopTorchMode];
+              [self sendCmdToRobot:@"/reset"];
+        }
+        else if([hypothesis hasPrefix:@"WALL E TAKE PHOTO"] || [hypothesis hasSuffix:@"PHOTO"] ) {
+            left_eye.animationDuration = 0.2;
+            left_eye.animationRepeatCount = 1;
+            [left_eye startAnimating];
+            bCmd = true; NSLog(@"===>WALL E TAKE PHOTO");
+            [self performSelectorOnMainThread:@selector(takePhoto) withObject:nil waitUntilDone:NO];
+            
         }
         /*else if([hypothesis isEqualToString:@"GO"]) {
             bCmd = true; NSLog(@"===>GO");
@@ -363,6 +395,12 @@ static CvMemStorage *storage = 0;
             //  NSMutableData* buf = [[NSMutableData alloc] initWithLength:0];
             NSURLConnection* connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
             [request release];
+        } else {
+            
+            // hear what ever, reset background
+            [background setImage:[UIImage imageNamed:@"irobot2.jpg"]];
+            left_eye.hidden = NO;
+            right_eye.hidden = NO;
         }
     
 	//self.heardTextView.text = [NSString stringWithFormat:@"Heard: \"%@\"", hypothesis]; // Show it in the status box.
@@ -718,6 +756,52 @@ static CvMemStorage *storage = 0;
     
 }
 
+- (UIImage*) rotateImage:(UIImage*) imgsrc{
+    UIImage * img = [imgsrc copy];
+    
+    // rotate image
+    CGImageRef imgRef = img.CGImage;
+    
+    CGFloat width = CGImageGetWidth(imgRef);
+    
+    CGFloat height = CGImageGetHeight(imgRef);
+    
+    
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    
+    CGRect bounds = CGRectMake(0, 0, width, height);
+    
+    
+    CGFloat scaleRatio = 1;
+    
+    
+    CGFloat boundHeight;
+    
+    //   UIImageOrientation orient = capturedImage.imageOrientation;
+    
+    transform = CGAffineTransformMakeTranslation(0.0, height);
+    
+    transform = CGAffineTransformScale(transform, 1.0, -1.0);
+    
+    
+    UIGraphicsBeginImageContext(bounds.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextScaleCTM(context, scaleRatio, -scaleRatio);
+    
+    CGContextTranslateCTM(context, 0, -height);
+    CGContextConcatCTM(context, transform);
+    
+    CGContextDrawImage(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, width, height), imgRef);
+    
+    UIImage *imageCopy = UIGraphicsGetImageFromCurrentImageContext();
+    
+    detectingImage = [imageCopy copy];
+    
+    UIGraphicsEndImageContext();
+    [imageCopy release];
+    return detectingImage;
+
+}
 - (void)detectFaceThread {
     
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
@@ -809,18 +893,29 @@ static CvMemStorage *storage = 0;
 }
 
 - (void)startDetection {
+    if (avSessionForFaceDetection == nil || !avSessionForFaceDetection.running)
+        [self setupCaptureSession];
     self.detecting = YES;
     [self performSelectorInBackground:@selector(detectFaceThread) withObject:nil];
   
 }
+
 - (void)stopDetection {
     self.detecting = NO;
+    [avSessionForFaceDetection stopRunning];
+    [avSessionForFaceDetection release];
+    avSessionForFaceDetection = nil;
 }
+
 
 // use avfoundation
 // Create and configure a capture session and start it running
 - (void)setupCaptureSession 
 {
+    if (self.avSessionForFaceDetection){
+        [self stopTorchMode];
+        [self stopDetection];
+    }
     NSError *error = nil;
     
     // Create the session
@@ -852,8 +947,7 @@ static CvMemStorage *storage = 0;
     }  
     
     // Create a device input with the device and add it to the session.
-    AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device 
-                                                                        error:&error];
+    AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
     if (!input) {
         // Handling the error appropriately.
     }
@@ -883,7 +977,7 @@ static CvMemStorage *storage = 0;
     [session startRunning];
     
     // Assign session to an ivar.
-    [self setSession:session];
+    [self setAvSessionForFaceDetection:session];
 }
 
 // Delegate routine that is called when a sample buffer was written
@@ -949,4 +1043,72 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     [player prepareToPlay];
 
 }*/
+
+
+// torch mode
+- (void) stopTorchMode{
+    if (avSessionForTorch){
+        [avSessionForTorch stopRunning];
+        [avSessionForTorch release];
+        avSessionForTorch = nil;
+    }
+
+}
+- (void) startTorchMode{
+    [self stopTorchMode];
+    if (avSessionForFaceDetection || self.detecting){
+         [self stopDetection];
+//        sleep(1000);
+    }
+       
+    
+    AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+  
+    if (device.torchMode == AVCaptureTorchModeOff)
+    {
+        // Create an AV session
+        AVCaptureSession *session = [[AVCaptureSession alloc] init];
+        
+        // Create device input and add to current session
+        AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error: nil];
+        [session addInput:input];
+        
+        // Create video output and add to current session
+        AVCaptureVideoDataOutput *output = [[AVCaptureVideoDataOutput alloc] init];
+        [session addOutput:output];
+        
+        // Start session configuration
+        [session beginConfiguration];
+        [device lockForConfiguration:nil];
+        
+        // Set torch to on
+        [device setTorchMode:AVCaptureTorchModeOn];
+        
+        [device unlockForConfiguration];
+        [session commitConfiguration];
+        
+        // Start the session
+        [session startRunning];
+        
+        // Keep the session around
+        [self setAvSessionForTorch:session];
+        
+        [output release];
+    }
+}
+
+
+// take photo
+- (void) takePhoto{
+    left_eye.hidden = YES;
+    right_eye.hidden = YES;
+    [background setImage:[self rotateImage:[capturedImage copy]]];
+    return;
+   /* sleep(1000);
+    
+    //UIImageWriteToSavedPhotosAlbum(image, self, @selector(savedImage:didFinishSavingWithError:contextInfo:), nil);
+     [background setImage:[UIImage imageNamed:@"irobot2.jpg"]];
+    left_eye.hidden = NO;
+    right_eye.hidden = NO;*/
+}
 @end

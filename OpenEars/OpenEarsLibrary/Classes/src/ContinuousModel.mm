@@ -908,6 +908,10 @@ audioDevice->roundsOfCalibration = 0;
 			[[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:notificationForContinuousSetupFailure waitUntilDone:NO];			
 		}
 		
+        time_t t_start;
+        time(&t_start);
+        bool needCalibration = false;
+        
         if (ps_start_utt(pocketSphinxDecoder, NULL) < 0) { // Data has been received and recognition is starting.
 			OpenEarsLog(@"ps_start_utt() failed");
 			NSDictionary *userInfoDictionaryForContinuousSetupFailure = [NSDictionary dictionaryWithObject:@"PocketsphinxContinuousSetupDidFail" forKey:@"OpenEarsNotificationType"];
@@ -938,7 +942,13 @@ audioDevice->roundsOfCalibration = 0;
 		
         for (;;) { // An inner loop in which the received speech will be decoded up to the point of a silence longer than a second.
 			
-			
+            time_t t;
+            time(&t);
+            if (t - t_start > 5){
+                needCalibration = true;
+                break;
+            }
+                        
 			if(exitListeningLoop == 1) {
 				break; // Break if we're trying to exit the loop.
 			}
@@ -989,7 +999,7 @@ audioDevice->roundsOfCalibration = 0;
 			if(exitListeningLoop == 1) {
 				break; // Break if we're trying to exit the loop.
 			}
-        }
+        } // inner loop 
 		
 		if(exitListeningLoop == 1) {
 			break; // Break if we're trying to exit the loop.
@@ -1008,37 +1018,42 @@ audioDevice->roundsOfCalibration = 0;
         OpenEarsLog("audioDevice->calibrating = FALSE1");
 		audioDevice->calibrating = FALSE; 
         
+        if(exitListeningLoop == 1) {
+			break; // Break if we're trying to exit the loop.
+		}
+        if (!needCalibration){
+		
+            OpenEarsLog(@"Processing speech, please wait...");
+            
+            ps_end_utt(pocketSphinxDecoder); // The utterance is ended,
+            hypothesis = ps_get_hyp(pocketSphinxDecoder, &recognitionScore, &utteranceID); // Return the hypothesis.
+            int32 probability = ps_get_prob(pocketSphinxDecoder, &utteranceID);
+            
+            OpenEarsLog(@"Pocketsphinx heard \"%s\" with a score of (%d) and an utterance ID of %s.", hypothesis, probability, utteranceID);
+            
+            NSString *hypothesisString = [[NSString alloc] initWithFormat:@"%s",hypothesis];
+            NSString *probabilityString = [[NSString alloc] initWithFormat:@"%d",probability];
+            NSString *uttidString = [[NSString alloc] initWithFormat:@"%s",utteranceID];
+            NSArray *hypothesisObjectsArray = [[NSArray alloc] initWithObjects:@"PocketsphinxDidReceiveHypothesis",hypothesisString,probabilityString,uttidString,nil];
+            NSArray *hypothesisKeysArray = [[NSArray alloc] initWithObjects:@"OpenEarsNotificationType",@"Hypothesis",@"RecognitionScore",@"UtteranceID",nil];
+            NSDictionary *userInfoDictionary = [[NSDictionary alloc] initWithObjects:hypothesisObjectsArray forKeys:hypothesisKeysArray];
+            NSNotification *notification = [NSNotification notificationWithName:@"OpenEarsNotification" object:nil userInfo:userInfoDictionary];
+            [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:notification waitUntilDone:NO];
+            [userInfoDictionary release];
+            [hypothesisObjectsArray release];
+            [hypothesisKeysArray release];
+            [hypothesisString release];
+            [probabilityString release];
+            [uttidString release];
+        } // if !needCalibration
         
 		if(exitListeningLoop == 1) {
 			break; // Break if we're trying to exit the loop.
 		}
-		OpenEarsLog(@"Processing speech, please wait...");
 		
-		ps_end_utt(pocketSphinxDecoder); // The utterance is ended,
-		hypothesis = ps_get_hyp(pocketSphinxDecoder, &recognitionScore, &utteranceID); // Return the hypothesis.
-		int32 probability = ps_get_prob(pocketSphinxDecoder, &utteranceID);
-		
-		OpenEarsLog(@"Pocketsphinx heard \"%s\" with a score of (%d) and an utterance ID of %s.", hypothesis, probability, utteranceID);
-		
-		NSString *hypothesisString = [[NSString alloc] initWithFormat:@"%s",hypothesis];
-		NSString *probabilityString = [[NSString alloc] initWithFormat:@"%d",probability];
-		NSString *uttidString = [[NSString alloc] initWithFormat:@"%s",utteranceID];
-		NSArray *hypothesisObjectsArray = [[NSArray alloc] initWithObjects:@"PocketsphinxDidReceiveHypothesis",hypothesisString,probabilityString,uttidString,nil];
-		NSArray *hypothesisKeysArray = [[NSArray alloc] initWithObjects:@"OpenEarsNotificationType",@"Hypothesis",@"RecognitionScore",@"UtteranceID",nil];
-		NSDictionary *userInfoDictionary = [[NSDictionary alloc] initWithObjects:hypothesisObjectsArray forKeys:hypothesisKeysArray];
-		NSNotification *notification = [NSNotification notificationWithName:@"OpenEarsNotification" object:nil userInfo:userInfoDictionary];
-		[[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:notification waitUntilDone:NO];
-		[userInfoDictionary release];
-		[hypothesisObjectsArray release];
-		[hypothesisKeysArray release];
-		[hypothesisString release];
-		[probabilityString release];
-		[uttidString release];
-
-		if(exitListeningLoop == 1) {
-			break; // Break if we're trying to exit the loop.
-		}
-		
+        if (needCalibration){
+            [self doCalibration];
+        }
         if (startRecording(audioDevice) < 0) { // Start over.
 			OpenEarsLog(@"startRecording failed");
 			NSDictionary *userInfoDictionaryForContinuousSetupFailure = [NSDictionary dictionaryWithObject:@"PocketsphinxContinuousSetupDidFail" forKey:@"OpenEarsNotificationType"];

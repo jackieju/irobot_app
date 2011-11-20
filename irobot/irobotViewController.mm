@@ -244,9 +244,20 @@ static CvMemStorage *storage = 0;
 - (void) pocketsphinxDidReceiveHypothesis:(NSString *)hypothesis recognitionScore:(NSString *)recognitionScore utteranceID:(NSString *)utteranceID {
     bool bCmd = false;
 	NSLog(@"The received hypothesis is %@ with a score of %@ and an ID of %@", hypothesis, recognitionScore, utteranceID); // Log it.
+    
+    if ([hypothesis length] == 0)
+        return;
+    
+    // filter result according to content and score
+    int recogScore = [recognitionScore intValue];
+    if(![hypothesis isEqualToString:@"CLEAN MY DESK"] && ![hypothesis hasSuffix:@"SHARE ME SOME LIGHT"] && ![hypothesis isEqualToString:@"STOP"] && ![hypothesis isEqualToString:@"PLAY WITH YOURSELF"]){
+        if (recogScore < -800){
+            NSLog(@"recognition score is too low (less than -800)");
+            return;
+        }
+    }
 
-
-
+    
         if(/*[hypothesis isEqualToString:@"LOOK AT RIGHT"]  || (*/[hypothesis hasPrefix:@"LOOK"] && [hypothesis hasSuffix:@"RIGHT"]) {
             bCmd = true;
             NSLog(@"===>look right");
@@ -279,7 +290,7 @@ static CvMemStorage *storage = 0;
             NSURLConnection* connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
             [request release];
         }
-        else if([hypothesis isEqualToString:@"LOOK AROUND"]) {
+        else if([hypothesis isEqualToString:@"LOOK AROUND"] || [hypothesis hasSuffix:@"LOOK AROUND"]) {
             left_eye.animationDuration = 0.5;
             left_eye.animationRepeatCount = 1;
             [left_eye startAnimating];

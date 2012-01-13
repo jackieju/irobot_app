@@ -104,11 +104,23 @@ static CvMemStorage *storage = 0;
     if (player)
          [player release];
     NSString *soundPath=[[NSBundle mainBundle] pathForResource:@"dance" ofType:@"m4a"];
-    
     NSURL *soundUrl=[[NSURL alloc] initFileURLWithPath:soundPath];
-    
     player=[[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
     [player prepareToPlay];
+    
+    if (player2)
+        [player2 release];
+    NSString *soundPath2=[[NSBundle mainBundle] pathForResource:@"say_something" ofType:@"mp3"];
+    NSURL *soundUrl2=[[NSURL alloc] initFileURLWithPath:soundPath2];
+    player2=[[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl2 error:nil];
+    [player2 prepareToPlay];
+    
+    if (player3)
+        [player3 release];
+    NSString *soundPath3=[[NSBundle mainBundle] pathForResource:@"say_name" ofType:@"mp3"];
+    NSURL *soundUrl3=[[NSURL alloc] initFileURLWithPath:soundPath3];
+    player3=[[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl3 error:nil];
+    [player3 prepareToPlay];
     
     // init openear
     [self.openEarsEventsObserver setDelegate:self]; // Make this class the delegate of OpenEarsObserver so we can get all of the messages about what OpenEars is doing.
@@ -143,7 +155,7 @@ static CvMemStorage *storage = 0;
     [self.pocketsphinxController startListeningWithLanguageModelAtPath:pathToGrammarToStartAppWith dictionaryAtPath:pathToDictionaryToStartAppWith languageModelIsJSGF:FALSE];
     
     // hide text view
- //   textView.hidden = TRUE;
+    textView.hidden = FALSE;
   //  left_eye.hidden = TRUE;
    // right_eye.hidden = TRUE;
     
@@ -158,8 +170,10 @@ static CvMemStorage *storage = 0;
 */
     [statusView setFrame:CGRectMake(0, 0, 480, 65) ];
     [self setupCaptureSession];
-    //[self startDetection];
+    [self startDetection];
     //[self startTorchMode];
+//    [self testFaceDetection:@"testfd2.jpg"];
+//    [self testFaceDetection:@"testfd3.jpg"];
 }
 
 
@@ -250,7 +264,14 @@ static CvMemStorage *storage = 0;
     
     // filter result according to content and score
     int recogScore = [recognitionScore intValue];
-    if(![hypothesis isEqualToString:@"CLEAN MY DESK"] && ![hypothesis hasSuffix:@"SHARE ME SOME LIGHT"] && ![hypothesis isEqualToString:@"STOP"] && ![hypothesis isEqualToString:@"PLAY WITH YOURSELF"]){
+    if(![hypothesis hasPrefix:@"WALL E"] 
+       && ![hypothesis isEqualToString:@"CLEAN MY DESK"] 
+       && ![hypothesis hasSuffix:@"SHARE ME SOME LIGHT"]
+       && ![hypothesis hasSuffix:@"HANDS"] 
+       && ![hypothesis isEqualToString:@"STOP"] 
+       && ![hypothesis isEqualToString:@"PLAY WITH YOURSELF"]
+       && ![hypothesis isEqualToString:@"SAY HELLO"]
+       && ![hypothesis isEqualToString:@"TRACK MY FACE"]){
         if (recogScore < -800){
             NSLog(@"recognition score is too low (less than -800)");
             return;
@@ -321,6 +342,68 @@ static CvMemStorage *storage = 0;
             [player play];
             [request release];
         }
+        else if([hypothesis hasSuffix:@"SAY SOMETHING"]) {
+            bCmd = true; NSLog(@"===>SAY SOMETHING");
+            
+            // wink
+            left_eye.animationDuration = 0.2;
+            left_eye.animationRepeatCount = 1;
+            [left_eye startAnimating];
+            
+            // send command to robot
+       /*     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];         
+            [request setURL:[NSURL URLWithString:@"http://169.254.203.23/dance"]];
+            [request setHTTPMethod:@"GET"];
+            //  NSMutableData* buf = [[NSMutableData alloc] initWithLength:0];
+            NSURLConnection* connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+            
+            [request release];
+        */    // play sound
+            [player2 play];
+        }
+        else if([hypothesis hasSuffix:@"SAY HELLO"]) {
+            bCmd = true; NSLog(@"===>SAY HELLO");
+            
+            // wink
+            left_eye.animationDuration = 0.2;
+            left_eye.animationRepeatCount = 1;
+            [left_eye startAnimating];
+            
+            // do action
+            [self sendCmdToRobot:@"/m=5=0/m=6=140/d=3000/m=5=120/m=6=50"];
+            // play sound
+            [player3 play];
+        }
+        else if([hypothesis hasSuffix:@"HANDS"]) {
+            bCmd = true; NSLog(@"===>RASIE YOUR HANDS");
+            
+            // wink
+            left_eye.animationDuration = 0.2;
+            left_eye.animationRepeatCount = 1;
+            [left_eye startAnimating];
+            
+            [self sendCmdToRobot:@"/m=5=0/m=6=140/d=3000/m=5=120/m=6=50"];
+        }
+        else if([hypothesis hasSuffix:@"GO"]) {
+            bCmd = true; NSLog(@"===>GO");
+            
+            // wink
+            left_eye.animationDuration = 0.2;
+            left_eye.animationRepeatCount = 1;
+            [left_eye startAnimating];
+            
+            [self sendCmdToRobot:@"/g=2000"];
+        }
+        else if([hypothesis hasSuffix:@"BACKWARD"]) {
+            bCmd = true; NSLog(@"===>BACKWARD");
+            
+            // wink
+            left_eye.animationDuration = 0.2;
+            left_eye.animationRepeatCount = 1;
+            [left_eye startAnimating];
+            
+            [self sendCmdToRobot:@"/b=2000"];
+        }
         else if([hypothesis isEqualToString:@"TRACK MY FACE"] || [hypothesis hasPrefix:@"TRACK"] || [hypothesis hasSuffix:@"FACE"]) {
             left_eye.animationDuration = 0.2;
             left_eye.animationRepeatCount = 1;
@@ -352,6 +435,12 @@ static CvMemStorage *storage = 0;
             bCmd = true; NSLog(@"===>WALL E TAKE PHOTO");
             [self performSelectorOnMainThread:@selector(takePhoto) withObject:nil waitUntilDone:NO];
             
+        }else if([hypothesis isEqualToString:@"TURN AROUND"]) {
+            bCmd = true;NSLog(@"===>turn around");
+            left_eye.animationDuration = 0.2;
+            left_eye.animationRepeatCount = 1;  
+            [left_eye startAnimating];
+            [self sendCmdToRobot:@"/m=3=180/m=4=180/d=5000/m=3=90/m=4=90"];
         }
         /*else if([hypothesis isEqualToString:@"GO"]) {
             bCmd = true; NSLog(@"===>GO");
@@ -408,11 +497,13 @@ static CvMemStorage *storage = 0;
             [request release];
         } else {
             
-            // hear what ever, reset background
-            [background setImage:[UIImage imageNamed:@"irobot2.jpg"]];
-            left_eye.hidden = NO;
-            right_eye.hidden = NO;
+       
+            
         }
+        // hear what ever, reset background
+    [background setImage:[UIImage imageNamed:@"irobot2.jpg"]];
+    left_eye.hidden = NO;
+    right_eye.hidden = NO;
     
 	//self.heardTextView.text = [NSString stringWithFormat:@"Heard: \"%@\"", hypothesis]; // Show it in the status box.
     if ( bCmd ){
@@ -602,13 +693,66 @@ static CvMemStorage *storage = 0;
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
     
 }
+
+- (void)testFaceDetection:(NSString*)filename{
+    UIImage *viewImage1 = [UIImage imageNamed:filename];
+    if(self.model == nil) {
+        NSString *file = [[NSBundle mainBundle] pathForResource:@"haarcascade_frontalface_alt2.xml" ofType:@"gz"];
+        self.model = (CvHaarClassifierCascade *) cvLoad([file cStringUsingEncoding:NSASCIIStringEncoding], 0, 0, 0);
+    }
+    CGRect scaled;
+    scaled.size = viewImage1.size;
+    scaled.size.width /= 2;
+    scaled.size.height /= 2;
+    viewImage1 = [viewImage1 scaleImage:scaled];
+    // Convert to grayscale and equalize.  Helps face detection.
+    IplImage *snapshot = [viewImage1 cvGrayscaleImage];
+    IplImage *snapshotRotated = cvCloneImage(snapshot);
+    cvEqualizeHist(snapshot, snapshot);
+
+    
+    storage = cvCreateMemStorage(0);
+    
+    double t = (double)cvGetTickCount();
+    CvSeq* faces = cvHaarDetectObjects(snapshotRotated, self.model, storage,
+                                       1.1, 2, CV_HAAR_DO_CANNY_PRUNING,cvSize(30, 30));
+    t = (double)cvGetTickCount() - t;
+    
+    NSLog(@"Face detection time %gms FOUND(%d)", t/((double)cvGetTickFrequency()*1000), faces->total);
+    
+    
+    if (faces->total>0){
+        CvRect *r = (CvRect *) cvGetSeqElem(faces, 0);
+        
+        face.origin.x = (float) r->x;
+        face.origin.y = (float) r->y;
+        face.size.width = (float) r->width;
+        face.size.height = (float) r->height;
+        
+     /*   face.size.width *= 2;
+        face.size.height *= 2;
+        face.origin.x *= 2;
+        face.origin.y *= 2;
+        */
+        NSLog(@"face deteced: x=%f, y=%f, width=%f, height=%f", face.origin.x, face.origin.y, face.size.width, face.size.height);
+    }
+    
+    cvReleaseImage(&snapshot);
+    cvReleaseImage(&snapshotRotated);
+    cvReleaseMemStorage(&storage);
+
+
+}
 - (CvSeq*) detectFace:(UIImage *)viewImage{
     self.detecting = YES;
+    
+    // load training model
     if(self.model == nil) {
         NSString *file = [[NSBundle mainBundle] pathForResource:@"haarcascade_frontalface_alt2.xml" ofType:@"gz"];
         self.model = (CvHaarClassifierCascade *) cvLoad([file cStringUsingEncoding:NSASCIIStringEncoding], 0, 0, 0);
     }
     
+//    NSLog(@"viewImage size :%f, %f", viewImage.size.width, viewImage.size.height);
     //  UIDevice *device = [UIDevice currentDevice];
     
     // CGImageRef screen = [UIImage UIGetScreenImage];
@@ -618,8 +762,12 @@ static CvMemStorage *storage = 0;
     
     //UIImage *viewImage = [self.capturedImage copy];
     //   UIImage *viewImage = self.capturedImage;
-       CGRect scaled;
-     scaled.size = viewImage.size;
+  /*  
+   scaleImage function has problem.
+   after scale, the image width and height is not acturate.
+   so we scale image outside 
+   CGRect scaled;
+    scaled.size = viewImage.size;
      
      //    if([device platformType] != UIDevice3GSiPhone) {
      //        scaled.size.width *= .5;
@@ -631,7 +779,7 @@ static CvMemStorage *storage = 0;
      
      //self.preview = viewImage;
      viewImage = [viewImage scaleImage:scaled];
-     
+     */
     // Convert to grayscale and equalize.  Helps face detection.
     IplImage *snapshot = [viewImage cvGrayscaleImage];
     IplImage *snapshotRotated = cvCloneImage(snapshot);
@@ -669,7 +817,7 @@ static CvMemStorage *storage = 0;
     
 
     if (faces->total>0){
-        //[background setImage:capturedImage];
+//        [background setImage:capturedImage];
         CvRect *r = (CvRect *) cvGetSeqElem(faces, 0);
         
         face.origin.x = (float) r->x;
@@ -677,10 +825,16 @@ static CvMemStorage *storage = 0;
         face.size.width = (float) r->width;
         face.size.height = (float) r->height;
         
+    /* scale image outside, so this block of code is not needed
         face.size.width /= .5;
         face.size.height /= .5;
         face.origin.x /= .5;
         face.origin.y /= .5;
+        
+        face.size.width *= 2;
+        face.size.height *= 2;
+        face.origin.x *= 2;
+        face.origin.y *= 2;*/
         [self performSelectorOnMainThread:@selector(faceDetected) withObject:nil waitUntilDone:NO];
         //textView.frame = face;
        // AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
@@ -699,7 +853,7 @@ static CvMemStorage *storage = 0;
     [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",@"http://169.254.203.23",cmd]]];
     [request setHTTPMethod:@"GET"];
     //  NSMutableData* buf = [[NSMutableData alloc] initWithLength:0];
-    NSURLConnection* connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+//    NSURLConnection* connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     NSLog(@"send cmd to robot: %@", cmd);
 //    NSString * s = [[NSString alloc] initWithString:statusView.text];
     statusView.text = [NSString stringWithFormat:@"%@ send cmd to robot: %@", statusView.text, cmd];
@@ -708,6 +862,8 @@ static CvMemStorage *storage = 0;
     [request release];
 }
 
+
+// after faces are detected, calculate the position and send command to robot
 - (void) faceDetected{
     double t = (double)cvGetTickCount();
     if (self.last_cmd_time != 0 ){
@@ -718,48 +874,83 @@ static CvMemStorage *storage = 0;
     last_cmd_time = t;
     
   
+    NSLog(@"face size:%f, %f", face.size.width, face.size.height);
+//    NSLog(@"detectingImage size:%f, %f", detectingImage.size.width, detectingImage.size.height);
     
-    //[background setImage:detectingImage];
+    /*
+     uncomment this block to debug face detection
+    background.frame = CGRectMake(0,0,detectingImage.size.width,detectingImage.size.height);
+    [background setImage:detectingImage];
+    left_eye.hidden = YES;
+    right_eye.hidden = YES;
+    */
     
-    textView.frame = face;
-    CGSize s = capturedImage.size;
+    /*float new_width_ci = 480*320/360;
+    int new_origin = (480-new_width_ci)/2;
+    CGRect f = CGRectMake(face.origin.x*320/360+new_origin, face.origin.y*320/360, face.size.width*320/360, face.size.height*320/360);
+    NSLog(@"new face size:%f, %f, %f, %f", f.origin.x, f.origin.y, f.size.width, f.size.height);
+    */
+    
+//    textView.frame = CGRectMake(face.origin.x, face.origin.y, face.size.width, face.size.height);
+//    CGSize s = detectingImage.size;
+    
+ //   CGSize scr_s = [[UIScreen mainScreen] bounds].size;
+ //   CGSize scr_s = background.frame.size;
+    
+    //NSLog(@"screen size:%f, %f", scr_s.width, scr_s.height);
    // float offset_x = s.width-(face.origin.x+face.size.width)- s.width/2; // left right mirrored
     //float offset_y = face.origin.y+(face.size.height/2) - s.height/2;
 //    NSLog(@"x=%f, y=%f, offsetx=%f, offsety=%f",s.width-(face.origin.x+face.size.width),  face.origin.y+(face.size.height/2), offset_x, offset_y);
     
-    float x = face.origin.x+face.size.width -30;
-    float y = face.origin.y+(face.size.height/2)+50;
-    float offset_x = x - s.width/2;
-    float offset_y = y - s.height/2;
+//    float x = face.origin.x+face.size.width -30;
+//    float y = face.origin.y+(face.size.height/2)+50;
+    float x = face.origin.x+face.size.width/2;
+    float y = face.origin.y+face.size.height/2;
+    float offset_x = x - 120; // hardcode because not know how to get real width
+    float offset_y = y - 90;  // hardcode because not know how to get real width
+
     NSLog(@"x=%f, y=%f, offsetx=%f, offsety=%f",x, y, offset_x, offset_y);
     statusView.text = [NSString stringWithFormat:@"x=%f, y=%f, offsetx=%f, offsety=%f", x, y, offset_x, offset_y];
+    // max error on x axis and y axis, consider center within this ranges.
+    // 8:6=480:360
+    int max_error_x = 8;
+    int max_error_y = 6;
+    
     if (fabs(offset_x) > fabs(offset_y)){
         // move horizon first, then vertical
-        if (fabs(offset_x) >2) {
-            if (offset_x < 0)
+        if (fabs(offset_x) > max_error_x) {
+            if (offset_x < 0){
+                NSLog(@"move head right");
                 [self sendCmdToRobot:@"/mh/12"]; // move head right
-            else
+            }
+            else{
+                NSLog(@"move head left");
                 [self sendCmdToRobot:@"/mh/11"]; // move head left
+            }
         }
-        if (fabs(offset_y) >10) {
-            if (offset_y > 0)
+        if (fabs(offset_y) > max_error_y) { 
+            if (offset_y > 0){
+                NSLog(@"move head down");
                 [self sendCmdToRobot:@"/mh/14"]; // move head down
-            else
+            }
+            else{
+                NSLog(@"move head up");
                 [self sendCmdToRobot:@"/mh/13"]; // move head up
+            }
         }
     }else{ // move vertical first, then horizon
 
-        if (fabs(offset_y) >10) {
+        if (fabs(offset_y) > max_error_y) {
             if (offset_y > 0)
                 [self sendCmdToRobot:@"/mh/14"]; // move head down
             else
                 [self sendCmdToRobot:@"/mh/13"]; // move head up
         }        
-        if (fabs(offset_x) >10) {
+        if (fabs(offset_x) > max_error_x) {
             if (offset_x < 0)
-                [self sendCmdToRobot:@"/mh/12"]; // move head left
+                [self sendCmdToRobot:@"/mh/12"]; // move head right
             else
-                [self sendCmdToRobot:@"/mh/11"]; // move head right
+                [self sendCmdToRobot:@"/mh/11"]; // move head left
         }    
     }
         
@@ -833,9 +1024,9 @@ static CvMemStorage *storage = 0;
             CGAffineTransform transform = CGAffineTransformIdentity;
             
             CGRect bounds = CGRectMake(0, 0, width, height);
+//            NSLog(@"bouds: %f, %f",width, height);
             
-            
-            CGFloat scaleRatio = 1;
+            CGFloat scaleRatio = 0.5f;
             
             
             CGFloat boundHeight;
@@ -859,7 +1050,7 @@ static CvMemStorage *storage = 0;
             UIImage *imageCopy = UIGraphicsGetImageFromCurrentImageContext();
             
             detectingImage = [imageCopy copy];
-            
+//              NSLog(@"bouds2: %f, %f",detectingImage.size.width, detectingImage.size.height);
             [self detectFace:detectingImage  ];
             UIGraphicsEndImageContext();
             [imageCopy release];

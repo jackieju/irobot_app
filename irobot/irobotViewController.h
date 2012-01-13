@@ -45,6 +45,8 @@
     
     // play sounds/music
     AVAudioPlayer *player;
+    AVAudioPlayer *player2;
+    AVAudioPlayer *player3;
     
     // torch mode
     AVCaptureSession* avSessionForTorch;

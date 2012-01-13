@@ -58,8 +58,9 @@ static CvMemStorage *storage = 0;
     
    // self.camera = nil;
     [statusView release];
-    [player release];
-    
+    [player1 release];
+    [player2 release];
+    [_player release];
     [avSessionForFaceDetection release];
     [avSessionForTorch release];
     [super dealloc];
@@ -101,12 +102,16 @@ static CvMemStorage *storage = 0;
     
     
     // prepare player
-    if (player)
-         [player release];
+    
+    
+
+    
+    if (player1)
+         [player1 release];
     NSString *soundPath=[[NSBundle mainBundle] pathForResource:@"dance" ofType:@"m4a"];
     NSURL *soundUrl=[[NSURL alloc] initFileURLWithPath:soundPath];
-    player=[[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
-    [player prepareToPlay];
+    player1=[[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
+    [player1 prepareToPlay];
     
     if (player2)
         [player2 release];
@@ -121,7 +126,7 @@ static CvMemStorage *storage = 0;
     NSURL *soundUrl3=[[NSURL alloc] initFileURLWithPath:soundPath3];
     player3=[[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl3 error:nil];
     [player3 prepareToPlay];
-    
+    [player3 play];
     // init openear
     [self.openEarsEventsObserver setDelegate:self]; // Make this class the delegate of OpenEarsObserver so we can get all of the messages about what OpenEars is doing.
 
@@ -143,8 +148,9 @@ static CvMemStorage *storage = 0;
     time(&t_start);
 
 
-  
-     // initialize openears
+    //////////////////////////////
+    // initialize openears
+    //////////////////////////////
     self.pathToGrammarToStartAppWith = [NSString stringWithFormat:@"%@/%@",[[NSBundle mainBundle] resourcePath], @"7678.languagemodel"]; 
     
        
@@ -153,6 +159,9 @@ static CvMemStorage *storage = 0;
 
 
     [self.pocketsphinxController startListeningWithLanguageModelAtPath:pathToGrammarToStartAppWith dictionaryAtPath:pathToDictionaryToStartAppWith languageModelIsJSGF:FALSE];
+    //////////////////////////////
+    // end of initilize openear
+    //////////////////////////////
     
     // hide text view
     //textView.hidden = TRUE;
@@ -174,8 +183,75 @@ static CvMemStorage *storage = 0;
     //[self startTorchMode];
 //    [self testFaceDetection:@"testfd2.jpg"];
 //    [self testFaceDetection:@"testfd3.jpg"];
+
+  
+    
 }
 
+- (void)play:(NSString*)file ofType:(NSString*)type{
+    
+    // use loud speaker instead of ear speaker
+    
+ /*  // use mix features
+    OSStatus propertySetError = 0;
+    UInt32 allowMixing = true;
+    
+    propertySetError = AudioSessionSetProperty (
+                                                kAudioSessionProperty_OverrideCategoryMixWithOthers,  // 1
+                                                sizeof (allowMixing),                                 // 2
+                                                &allowMixing                                          // 3
+                                                );*/
+  /*  UInt32 audioCat;
+	UInt32 audioCatSize = sizeof(audioCat);
+	OSStatus getAudioRouteStatus = AudioSessionGetProperty(kAudioSessionProperty_AudioCategory, &audioCatSize, &audioCat);*/
+    // change category
+    
+    UInt32 sessionCategory = kAudioSessionCategory_MediaPlayback;
+    AudioSessionSetProperty(kAudioSessionProperty_AudioCategory, sizeof(sessionCategory), &sessionCategory);
+    
+    // change route to speaker
+        UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;
+        AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute,sizeof (audioRouteOverride),&audioRouteOverride);
+    
+    
+  /*  //    UInt32 doChangeDefaultRoute = 1;
+    //    
+    //    AudioSessionSetProperty (
+    //                             kAudioSessionProperty_OverrideCategoryDefaultToSpeaker,
+    //                             sizeof (doChangeDefaultRoute),
+    //                             &doChangeDefaultRoute
+    //                             );
+    
+    UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;  // 1
+    
+    AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute,                         // 2
+                             sizeof (audioRouteOverride),                                      // 3
+                             &audioRouteOverride                                               // 4
+                             );*/
+    if (_player)
+        [_player release];
+
+    NSString *soundPath3=[[NSBundle mainBundle] pathForResource:file ofType:type];
+    NSURL *soundUrl3=[[NSURL alloc] initFileURLWithPath:soundPath3];
+    _player=[[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl3 error:nil];
+    [_player setDelegate:self];
+    [_player prepareToPlay];
+    [_player play];
+    
+
+    
+ 
+}
+
+-(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *) player  
+                      successfully: (BOOL) flag  
+{  
+    // change category back
+    
+    // AudioSessionSetProperty(kAudioSessionProperty_AudioCategory, sizeof(audioCat), &audioCat);
+    UInt32 sessionCategory2 = kAudioSessionCategory_PlayAndRecord;
+    AudioSessionSetProperty(kAudioSessionProperty_AudioCategory, sizeof(sessionCategory2), &sessionCategory2);
+} 
 
 - (void)viewDidUnload
 {
@@ -267,7 +343,8 @@ static CvMemStorage *storage = 0;
     if(![hypothesis hasPrefix:@"WALL E"] 
        && ![hypothesis isEqualToString:@"CLEAN MY DESK"] 
        && ![hypothesis hasSuffix:@"SHARE ME SOME LIGHT"]
-       && ![hypothesis hasSuffix:@"HANDS"] 
+       && ![hypothesis hasSuffix:@"HANDS"]
+       && ![hypothesis isEqualToString:@"DANCE"] 
        && ![hypothesis isEqualToString:@"STOP"] 
        && ![hypothesis isEqualToString:@"PLAY WITH YOURSELF"]
        && ![hypothesis isEqualToString:@"SAY HELLO"]
@@ -339,7 +416,8 @@ static CvMemStorage *storage = 0;
             NSURLConnection* connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
             
             // play music
-            [player play];
+//            [player1 play];
+            [self play:@"dance" ofType:@"m4a"];
             [request release];
         }
         else if([hypothesis hasSuffix:@"SAY SOMETHING"]) {
@@ -359,7 +437,8 @@ static CvMemStorage *storage = 0;
             
             [request release];
         */    // play sound
-            [player2 play];
+            //[player2 play];
+            [self play:@"say_something" ofType:@"mp3"];
         }
         else if([hypothesis hasSuffix:@"SAY HELLO"]) {
             bCmd = true; NSLog(@"===>SAY HELLO");
@@ -372,7 +451,8 @@ static CvMemStorage *storage = 0;
             // do action
             [self sendCmdToRobot:@"/m=5=0/m=6=140/d=3000/m=5=120/m=6=50"];
             // play sound
-            [player3 play];
+          //  [player3 play];
+            [self play:@"say_name" ofType:@"mp3"];
         }
         else if([hypothesis hasSuffix:@"HANDS"]) {
             bCmd = true; NSLog(@"===>RASIE YOUR HANDS");

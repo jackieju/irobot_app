@@ -14,7 +14,7 @@
 @class FliteController;
 #import "OpenEarsEventsObserver.h" // We need to import this here in order to use the delegate.
 
-@interface irobotViewController : UIViewController <OpenEarsEventsObserverDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>{
+@interface irobotViewController : UIViewController <OpenEarsEventsObserverDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AVCaptureVideoDataOutputSampleBufferDelegate, AVAudioPlayerDelegate>{
     time_t t_start;
     
     UIImageView *background;    // background image view, showing wall=e face
@@ -44,9 +44,10 @@
     
     
     // play sounds/music
-    AVAudioPlayer *player;
+    AVAudioPlayer *player1;
     AVAudioPlayer *player2;
     AVAudioPlayer *player3;
+    AVAudioPlayer *_player;
     
     // torch mode
     AVCaptureSession* avSessionForTorch;

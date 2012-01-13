@@ -155,7 +155,7 @@ static CvMemStorage *storage = 0;
     [self.pocketsphinxController startListeningWithLanguageModelAtPath:pathToGrammarToStartAppWith dictionaryAtPath:pathToDictionaryToStartAppWith languageModelIsJSGF:FALSE];
     
     // hide text view
-    textView.hidden = FALSE;
+    //textView.hidden = TRUE;
   //  left_eye.hidden = TRUE;
    // right_eye.hidden = TRUE;
     
@@ -170,7 +170,7 @@ static CvMemStorage *storage = 0;
 */
     [statusView setFrame:CGRectMake(0, 0, 480, 65) ];
     [self setupCaptureSession];
-    [self startDetection];
+    //[self startDetection];
     //[self startTorchMode];
 //    [self testFaceDetection:@"testfd2.jpg"];
 //    [self testFaceDetection:@"testfd3.jpg"];

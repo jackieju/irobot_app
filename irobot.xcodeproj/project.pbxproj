@@ -10,6 +10,8 @@
 		5A16FCCA14BF8E9B00A0CE21 /* testfd.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5A16FCC914BF8E9B00A0CE21 /* testfd.jpg */; };
 		5A16FCCC14BF90EA00A0CE21 /* testfd2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5A16FCCB14BF90EA00A0CE21 /* testfd2.jpg */; };
 		5A16FCCE14BF918700A0CE21 /* testfd3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5A16FCCD14BF918700A0CE21 /* testfd3.jpg */; };
+		5A16FCD114C0DD6300A0CE21 /* i-robot_57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A16FCCF14C0DD6300A0CE21 /* i-robot_57x57.png */; };
+		5A16FCD214C0DD6300A0CE21 /* i-robot_72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A16FCD014C0DD6300A0CE21 /* i-robot_72x72.png */; };
 		5A31C235146860C3001E0B9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A31C234146860C3001E0B9F /* UIKit.framework */; };
 		5A31C237146860C3001E0B9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A31C236146860C3001E0B9F /* Foundation.framework */; };
 		5A31C239146860C3001E0B9F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A31C238146860C3001E0B9F /* CoreGraphics.framework */; };
@@ -76,6 +78,8 @@
 		5A16FCC914BF8E9B00A0CE21 /* testfd.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testfd.jpg; sourceTree = "<group>"; };
 		5A16FCCB14BF90EA00A0CE21 /* testfd2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testfd2.jpg; sourceTree = "<group>"; };
 		5A16FCCD14BF918700A0CE21 /* testfd3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testfd3.jpg; sourceTree = "<group>"; };
+		5A16FCCF14C0DD6300A0CE21 /* i-robot_57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "i-robot_57x57.png"; sourceTree = "<group>"; };
+		5A16FCD014C0DD6300A0CE21 /* i-robot_72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "i-robot_72x72.png"; sourceTree = "<group>"; };
 		5A31C230146860C3001E0B9F /* irobot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = irobot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A31C234146860C3001E0B9F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5A31C236146860C3001E0B9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -247,6 +251,8 @@
 			children = (
 				5A31C25D14687E8E001E0B9F /* irobot.jpg */,
 				5A16FCC914BF8E9B00A0CE21 /* testfd.jpg */,
+				5A16FCCF14C0DD6300A0CE21 /* i-robot_57x57.png */,
+				5A16FCD014C0DD6300A0CE21 /* i-robot_72x72.png */,
 				5A16FCCD14BF918700A0CE21 /* testfd3.jpg */,
 				5A16FCCB14BF90EA00A0CE21 /* testfd2.jpg */,
 				5A31C27B1468A668001E0B9F /* eye_0.png */,
@@ -414,6 +420,8 @@
 				5A16FCCA14BF8E9B00A0CE21 /* testfd.jpg in Resources */,
 				5A16FCCC14BF90EA00A0CE21 /* testfd2.jpg in Resources */,
 				5A16FCCE14BF918700A0CE21 /* testfd3.jpg in Resources */,
+				5A16FCD114C0DD6300A0CE21 /* i-robot_57x57.png in Resources */,
+				5A16FCD214C0DD6300A0CE21 /* i-robot_72x72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

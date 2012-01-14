@@ -126,7 +126,7 @@ static CvMemStorage *storage = 0;
     NSURL *soundUrl3=[[NSURL alloc] initFileURLWithPath:soundPath3];
     player3=[[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl3 error:nil];
     [player3 prepareToPlay];
-    [player3 play];
+//    [player3 play];
     // init openear
     [self.openEarsEventsObserver setDelegate:self]; // Make this class the delegate of OpenEarsObserver so we can get all of the messages about what OpenEars is doing.
 
@@ -184,7 +184,11 @@ static CvMemStorage *storage = 0;
 //    [self testFaceDetection:@"testfd2.jpg"];
 //    [self testFaceDetection:@"testfd3.jpg"];
 
-  
+  // say hello
+    // do action
+    [self sendCmdToRobot:@"/m=2=90/m=5=0/m=6=140/d=2000/m=5=120/m=6=50"];
+    // play sound
+    [self play:@"say_name" ofType:@"mp3"];
     
 }
 
@@ -464,7 +468,7 @@ static CvMemStorage *storage = 0;
             
             [self sendCmdToRobot:@"/m=5=0/m=6=140/d=3000/m=5=120/m=6=50"];
         }
-        else if([hypothesis hasSuffix:@"GO"]) {
+        else if([hypothesis hasSuffix:@"GO"] && [hypothesis hasPrefix:@"WALL E"]) {
             bCmd = true; NSLog(@"===>GO");
             
             // wink
@@ -472,7 +476,7 @@ static CvMemStorage *storage = 0;
             left_eye.animationRepeatCount = 1;
             [left_eye startAnimating];
             
-            [self sendCmdToRobot:@"/g=2000"];
+            [self sendCmdToRobot:@"/m=5=0/m=6=140/g=3000/m=5=120/m=6=50"];
         }
         else if([hypothesis hasSuffix:@"BACKWARD"]) {
             bCmd = true; NSLog(@"===>BACKWARD");
@@ -933,7 +937,7 @@ static CvMemStorage *storage = 0;
     [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",@"http://169.254.203.23",cmd]]];
     [request setHTTPMethod:@"GET"];
     //  NSMutableData* buf = [[NSMutableData alloc] initWithLength:0];
-//    NSURLConnection* connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    NSURLConnection* connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     NSLog(@"send cmd to robot: %@", cmd);
 //    NSString * s = [[NSString alloc] initWithString:statusView.text];
     statusView.text = [NSString stringWithFormat:@"%@ send cmd to robot: %@", statusView.text, cmd];

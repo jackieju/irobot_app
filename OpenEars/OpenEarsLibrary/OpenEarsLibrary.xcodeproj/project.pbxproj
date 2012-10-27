@@ -1921,6 +1921,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = OpenEarsLibrary_Prefix.pch;
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = (
 					../mitlm.0.4/src,
 					Classes/include,
@@ -1929,8 +1930,10 @@
 					"../CMULibraries/pocketsphinx-0.6.1/include",
 				);
 				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = OpenEarsLibrary;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -1943,6 +1946,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = OpenEarsLibrary_Prefix.pch;
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = (
 					../mitlm.0.4/src,
 					Classes/include,
@@ -1951,9 +1955,11 @@
 					"../CMULibraries/pocketsphinx-0.6.1/include",
 				);
 				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = OpenEarsLibrary;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};

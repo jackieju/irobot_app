@@ -894,7 +894,7 @@ static CvMemStorage *storage = 0;
     double t = (double)cvGetTickCount();
     CvSeq* faces = cvHaarDetectObjects(snapshotRotated, self.model, storage,
                                        1.1, 2, CV_HAAR_DO_CANNY_PRUNING,
-                                       cvSize(30, 30));
+                                       cvSize(5, 5));
     t = (double)cvGetTickCount() - t;
     
     NSLog(@"Face detection time %gms FOUND(%d)", t/((double)cvGetTickFrequency()*1000), faces->total);
@@ -990,8 +990,8 @@ static CvMemStorage *storage = 0;
 //    float y = face.origin.y+(face.size.height/2)+50;
     float x = face.origin.x+face.size.width/2;
     float y = face.origin.y+face.size.height/2;
-    float offset_x = x - 120; // hardcode because not know how to get real width
-    float offset_y = y - 90;  // hardcode because not know how to get real width
+    float offset_x = x - 60; // 480/8 hardcode because not know how to get real width
+    float offset_y = y - 45;  // 360/8  hardcode because not know how to get real width
 
     NSLog(@"x=%f, y=%f, offsetx=%f, offsety=%f",x, y, offset_x, offset_y);
     statusView.text = [NSString stringWithFormat:@"x=%f, y=%f, offsetx=%f, offsety=%f", x, y, offset_x, offset_y];
@@ -1006,10 +1006,13 @@ static CvMemStorage *storage = 0;
             if (offset_x < 0){
                 NSLog(@"move head right");
                 [self sendCmdToRobot:@"/mh/12"]; // move head right
+//                [self sendCmdToRobot:@"/m=2-6"]; // move head right
             }
             else{
                 NSLog(@"move head left");
                 [self sendCmdToRobot:@"/mh/11"]; // move head left
+//                [self sendCmdToRobot:@"/m=2+6"]; // move head left
+
             }
         }
         if (fabs(offset_y) > max_error_y) { 
@@ -1033,8 +1036,12 @@ static CvMemStorage *storage = 0;
         if (fabs(offset_x) > max_error_x) {
             if (offset_x < 0)
                 [self sendCmdToRobot:@"/mh/12"]; // move head right
+//            [self sendCmdToRobot:@"/m=2-6"]; // move head right
+
             else
                 [self sendCmdToRobot:@"/mh/11"]; // move head left
+//            [self sendCmdToRobot:@"/m=2+6"]; // move head left
+
         }    
     }
         
@@ -1091,7 +1098,7 @@ static CvMemStorage *storage = 0;
 - (void)detectFaceThread {
     
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    [self retain];
+//    [self retain];
     
     while (self.detecting){
         if (self.capturedImage != nil){
@@ -1110,7 +1117,7 @@ static CvMemStorage *storage = 0;
             CGRect bounds = CGRectMake(0, 0, width, height);
 //            NSLog(@"bouds: %f, %f",width, height);
             
-            CGFloat scaleRatio = 0.5f;
+            CGFloat scaleRatio = 0.25f;
             
             
             CGFloat boundHeight;
